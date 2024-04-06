@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <!--<< Required meta tags >>-->
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>寻香悦己-个人信息</title>
+   <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+   <link rel="stylesheet" href="/static/css/aos.css">
+   <link rel="stylesheet" href="/static/css/main.css">
+   <link rel="stylesheet" href="/static/css/main.css">
+   <link rel="stylesheet" href="/static/css/xiangdiao.css">
+   <style>
+
+@media (min-width: 1500px){
+        .item {
+            margin: 20px 400px;
+            height: 200px;
+            width: 1200px;
+            font-size: larger;
+        }
+        .item h2 {
+            font-size: 30px;
+        }
+    }
+   </style>
+</head>
+<body>
+<div class="preloader__matias">
+   <div class="box text-center">
+      <div class="matias mb-10">
+         <img src="/static/picture/Preloader.png" alt="img">
+      </div>
+      <span class="fz-30 mati fw-600 text-uppercase">
+         寻香悦己
+      </span>
+   </div>
+</div>
+<!--<< banner >>-->
+<section class="banner__section">
+   <!--<< Header v-1 >>-->
+   <header class="header-section" style="  border-bottom-style:solid; border-width:2px;border-color:#c5e8ef;">
+      <div class="container">
+         <div class="header-wrapper">
+            <div class="main__logo">
+               <a href="" class="logo">
+                  <img src="/static/picture/logo.png" alt="logo">
+               </a>
+            </div>
+            <ul class="main-menu">
+               <li>
+                  <a href="">
+                     首页
+                  </a>
+               </li>
+               <li>
+                  <a href="brand.html">
+                     品牌
+                  </a>
+               </li>
+               <li class="sub-menu">
+                  <a href="service.html #services">
+                     香调
+                  </a>
+               </li>
+               <div class="sub-menu" style="width: 96px;height: 100px;text-align: center;line-height: 100px;background:url(./static/image/21.png) center no-repeat;">
+                  <a href="service-details.html" style="font-size: 20px;font-family: SimHei;color: #f1aeb5;margin-bottom: 20px;">
+                       寻香
+                     </a>
+
+               </div>
+
+               <li>
+                  <a href="protfolio.html">
+                     调香师
+                  </a>
+               </li>
+               <li  class="sub-menu" class="subtwohober">
+                  <a href="blog.html">排行榜</a>
+               </li>
+               <li >
+                  <a href="blog-details.html">社区</a>
+               </li>
+            </ul>
+            <div class="menu__components d-flex align-items-center">
+               <a href="contact.html" class="d-flex fw-500 cmn--btn align-items-center gap-2">
+                  <span class="get__text">
+                     Join us
+                  </span>
+                  <span>
+                     <i class="bi bi-arrow-right fz-20"></i>
+                  </span>
+               </a>
+               <div class="header-bar d-lg-none">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+               </div>
+               <div class="remove__click">
+                  <i class="bi bi-list"></i>
+               </div>
+            </div>
+         </div>
+      </div>
+   </header>
+   <!--<< Header v-1 >>-->
+
+   <div class="container pt-120 pb-120">
+      <div class="row g-4 justify-content-center">
+         <div class="col-lg-8">
+            <div class="breadcrumnd__wrap text-center">
+               <h1>
+                  个人信息
+               </h1>
+               <ul class="breakcrumnd__cont justify-content-center">
+                  <li>
+                     <a href="index.html">
+                        Home 
+                     </a>
+                  </li>
+                  <li class="white">
+                     /  
+                  </li>
+                  <li class="base">
+                     myself
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="introduce">
+   <div class="introduce-main">
+
+
+   <div class="tou">
+      <img src="/static/picture/头像.webp" width="220px">
+   </div>
+      <div class="r">
+         <ul>
+               <li>
+                  昵称：<input type="text" ng-model="info.uemail" class="passwordInput">
+               </li>
+               <li>
+         <div>
+          <span style="padding-right: 10px;">性别:</span>
+           男<input type="radio" name="gender" value="男"/>
+         女<input type="radio" name="gender" value="女"/>
+     </div>
+               <li>
+                  年龄：<input type="text" ng-model="info.uemail" class="passwordInput">
+               </li>
+               <li>
+                  喜好：<input type="text" ng-model="info.uemail" class="passwordInput">
+               </li>
+               <li>
+                  <span>个人简介：</span>
+                  <textarea ng-model="info.udesc" cols="60" rows="6" style="border: 1px solid #d7d7d7;text-indent: 3px;width: 100%;height: 100%;font-family: STHeiti, MingLiu;;"></textarea>
+               </li>
+         </ul>
+         </div>
+ </div>
+</div>
+<div style="font-size:35px;color:rgb(80, 122, 174);margin-left: 150px;">已收藏：</div>
+<div style="height:10px;margin:0;position:relative;clear:both;border-bottom: 3px solid #eee;"></div>
+<div class="items" id="items" compile="items">
+ 
+  
+  
+   <div class="item ng-scope" href="xiangshui.html">
+       <a href="xiangshui.html" target="_blank" class="imgborder">
+           <img src="/static/image/六神花露水.webp" class="noxx" onerror="imgcdnfallback(this,/static/image/六神花露水.webp)">
+       </a>
+       <div class="detail" href="xiangshui.html">
+           <a   target="_blank" href="xiangshui.html">
+               <h2>六神 花露水 Liushen Liushen Florida Water 六神花露水，1990</h2>
+           </a>
+           <div class="score">
+               <span class="star0 sa10"></span>
+               "9.9分~人评分"
+           </div>
+           <div class="info">
+               前调：
+               <br>
+               中调：
+               <br>
+               后调：
+           </div>
+           <div class="shouchang-button" data-perfume-id="<%= perfume.id %>">
+            <img class="heart" src="/static/image/start.webp" style="width: 30px;">
+          </div>
+       </div>
+   </div>
+</div>
+</div>
+</section>
+
+<div class="containerr pt-120 pb-120">
+   <div class="row g-4 justify-content-center">
+      <div class="col-lg-8">
+         <div class="breadcrumnd__wrap text-center">
+            <h1>
+               人生海海，有幸相遇！
+            </h1>
+            <ul class="breakcrumnd__cont justify-content-center">
+               <li>
+                  <a href="index.html">
+                     Home
+                  </a>
+               </li>
+               <li class="white">
+                  /
+               </li>
+               <li class="base">
+                  <a href="contact.html">
+                  Join Us
+                  </a>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+ <div class="progress-wrap">
+      <svg class="progress-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
+         <path fill="#c9f31d" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+      </svg>
+      <i class="bi bi-arrow-90deg-up title topping"></i>
+   </div>
+ <script data-cfasync="false" src="/static/js/email-decode.min.js"></script><script src="/static/js/jquery-3.7.0.min.js"></script>
+   <!--<< Viewport Js >>-->
+   <script src="/static/js/viewport.jquery.js"></script>
+   <!--<< Bootstrap Js >>-->
+   <script src="/static/js/bootstrap.min.js"></script>
+   <!--<< Aos animation Js >>-->
+   <script src="/static/js/aos.js"></script>
+   <!--<< Nice Select Js >>-->
+   <script src="/static/js/jquery.nice-select.min.js"></script>
+   <!--<< Swiper Slide Js >>-->
+   <script src="/static/js/swiper-bundle.min.js"></script>
+   <!--<< Swiper Bundle Js >>-->
+   <script src="/static/js/jquery.magnific-popup.min.js"></script>
+   <!--<< magnific popup Js >>-->
+   <script src="/static/js/odometer.min.js"></script>
+   <!--<< Odometer js Js >>-->
+   <script src="/static/js/wow.min.js"></script>
+   <!--<< Wow Animation js >>-->
+   <script src="/static/js/main.js"></script>
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 检查并更新收藏状态
+        checkAndUpdateFavorites();
+    
+        document.querySelectorAll('.shouchang-button').forEach(function(button) {
+            button.addEventListener('click', function() {
+                var img = this.querySelector('.heart');
+                var perfumeId = this.getAttribute('data-perfume-id');
+                var isFavorite = img.getAttribute('src') === '/static/image/start-icon.webp';
+    
+                // 检查登录状态
+                fetch('/check-login')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.isLoggedIn) {
+                            // 已登录，处理收藏逻辑
+                            if (!isFavorite) {
+                                img.src = '/static/image/start-icon.webp';
+                                addFavorite(perfumeId);
+                            } else {
+                                img.src = '/static/image/start.webp';
+                                removeFavorite(perfumeId);
+                            }
+                        } else {
+                            // 未登录，跳转到 contact.html
+                            window.location.href = '/contact.html';
+                        }
+                    });
+            });
+        });
+    });
+    
+    function checkAndUpdateFavorites() {
+        fetch('/get-user-favorites')
+            .then(response => response.json())
+            .then(favorites => {
+                favorites.forEach(favoriteId => {
+                    var button = document.querySelector('.shouchang-button[data-perfume-id="' + favoriteId + '"]');
+                    console.log('Button for perfume ID ' + favoriteId + ':', button); // 打印找到的按钮元素
+                    if (button) {
+                        var img = button.querySelector('.heart');
+                        img.src = '/static/image/start-icon.webp';
+                    }
+                });
+            });
+    }
+    
+    function addFavorite(perfumeId) {
+        fetch('/add-favorite', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ perfumeId: perfumeId })
+        });
+    }
+    
+    function removeFavorite(perfumeId) {
+        fetch('/remove-favorite', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ perfumeId: perfumeId })
+        });
+    }
+    </script>
+    
+</body>
+</html>

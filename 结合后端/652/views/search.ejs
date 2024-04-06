@@ -280,8 +280,8 @@
                       后调：<%= perfume.houdiao %>
                   </div>
               </div>
-              <div class="shouchang-button">
-               <img class="heart" src="/static/image/start.webp" style="width: 30px;"></img>
+              <div class="shouchang-button" data-perfume-id="<%= perfume.id %>">
+               <img class="heart" src="/static/image/start.webp" style="width: 30px;">
              </div>
             </div>
             <% }); %>
@@ -380,7 +380,7 @@
       <img src="static/picture/logo.png" alt="img" style="height: 50px;width: 100px;">
    </div>
    <div class="sub__contact__wrapper d-grid">
-  
+      <p style="font-size: x-large;"><strong>欢迎您！</strong><img src="static/image/life.webp" style="width: 50%;height:30px;"></p>
       <a href="index.html" class="side-logo">
          <img src="/static/picture/头像.webp" alt="img" class="side-logo1">
       </a>
@@ -390,20 +390,21 @@
          </li>
       </ul>
    </div>
-   <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2 logout-button">
+
+      <a href="/geren.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
+         <span>
+            <i class="bi bi-chevron-right"></i>             
+         </span>
+         <span class="get__text">
+           个人信息
+         </span>
+      </a>
+      <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2 logout-button">
          <span>
             <i class="bi bi-chevron-right"></i>             
          </span>
          <span class="get__text">
             退出登录
-         </span>
-      </a>
-      <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
-         <span>
-            <i class="bi bi-chevron-right"></i>             
-         </span>
-         <span class="get__text">
-            进入首页
          </span>
       </a>
 </div>  
@@ -481,76 +482,99 @@
          // 将EJS变量`query`的值赋给JavaScript变量
          var searchQuery = "<%= query %>";
        </script>
-       
-   <script>
-      document.getElementById('loadMoreButton').addEventListener('click', function() {
-        const currentCount = document.querySelectorAll('.item.ng-scope').length;
-        fetch(`/sousuo/loadMorePerfumes?offset=${currentCount}&limit=5&searchQuery=${encodeURIComponent(searchQuery)}`)
-        .then(response => {
-    if (!response.ok) {
-      throw new Error(`服务器错误: ${response.statusText}`);
-    }
-    return response.json();
-  })
-          .then(data => {
-            const itemsContainer = document.getElementById('items');
-            data.forEach(perfume => {
-              // 评分和星级逻辑
-              const scoreText = perfume.score ? perfume.score + '分' : '暂无';
-              let starsHtml = '';
-              const fullStars = Math.floor(perfume.score / 2);
-              const halfStar = perfume.score % 2 >= 1.5;
-              const partialStar = perfume.score % 2 >= 1 && perfume.score % 2 < 1.5;
-              const emptyStars = 5 - fullStars - (partialStar ? 1 : 0) - (halfStar ? 1 : 0);
-      
-              for(let i = 0; i < fullStars; i++) {
-                starsHtml += '<img src="/static/image/4.png" alt="Star" class="star">';
-              }
-              if(partialStar) {
-                starsHtml += '<img src="/static/image/3.png" alt="Star" class="star">';
-              }
-              if(halfStar) {
-                starsHtml += '<img src="/static/image/2.png" alt="Star" class="star">';
-              }
-              for(let i = 0; i < emptyStars; i++) {
-                starsHtml += '<img src="/static/image/1.png" alt="Star" class="star">';
-              }
-      
-              // 构建每个香水的HTML结构
-              const itemHtml = `
-                <div class="item ng-scope">
-                    <a href="" target="_blank" class="imgborder">
-                      <img src="/static/picture/perfume/${perfume.id}.png" class="noxx" onerror="this.onerror=null;this.src='/static/picture/image/六神花露水.webp';">
-                    </a>
-                    
-                    <div class="detail">
-                      <a href="/perfumeDetail/${perfume.id}" target="_blank">
-                         <h2>${perfume.perfumeName}</h2>
-                     </a>
-                      <div class="score-and-stars">
-                         <div class="score">
-                             ${scoreText}
-                         </div>
-                         <div class="stars">
-                            ${starsHtml}
-                         </div>
-                      </div>
-                     
-                      <div class="info">
-                          前调：${perfume.qiandiao}<br>
-                          中调：${perfume.zhongdiao}<br>
-                          后调：${perfume.houdiao}
-                      </div>
-                  </div>
-                </div>`;
-              itemsContainer.innerHTML += itemHtml;
-             // console.log('加载的数据:', data);
-            });
-          })
-          .catch(error => console.error('Error loading more perfumes:', error));
-      });
-      </script>
-       
+       <script>document.getElementById('loadMoreButton').addEventListener('click', function() {
+         const currentCount = document.querySelectorAll('.item.ng-scope').length;
+         fetch(`/sousuo/loadMorePerfumes?offset=${currentCount}&limit=5&searchQuery=${encodeURIComponent(searchQuery)}`)
+             .then(response => {
+                 if (!response.ok) {
+                     throw new Error(`服务器错误: ${response.statusText}`);
+                 }
+                 return response.json();
+             })
+             .then(data => {
+                 const itemsContainer = document.getElementById('items');
+                 data.forEach(perfume => {
+                     // 评分和星级逻辑
+                     const scoreText = perfume.score ? perfume.score + '分' : '暂无';
+                     let starsHtml = '';
+                     const fullStars = Math.floor(perfume.score / 2);
+                     const halfStar = perfume.score % 2 >= 1.5;
+                     const partialStar = perfume.score % 2 >= 1 && perfume.score % 2 < 1.5;
+                     const emptyStars = 5 - fullStars - (partialStar ? 1 : 0) - (halfStar ? 1 : 0);
+     
+                     for (let i = 0; i < fullStars; i++) {
+                         starsHtml += '<img src="/static/image/4.png" alt="Star" class="star">';
+                     }
+                     if (partialStar) {
+                         starsHtml += '<img src="/static/image/3.png" alt="Star" class="star">';
+                     }
+                     if (halfStar) {
+                         starsHtml += '<img src="/static/image/2.png" alt="Star" class="star">';
+                     }
+                     for (let i = 0; i < emptyStars; i++) {
+                         starsHtml += '<img src="/static/image/1.png" alt="Star" class="star">';
+                     }
+     
+                     // 构建每个香水的HTML结构
+                     const itemHtml = `
+                         <div class="item ng-scope">
+                             <a href="" target="_blank" class="imgborder">
+                                 <img src="/static/picture/perfume/${perfume.id}.png" class="noxx" onerror="this.onerror=null;this.src='/static/picture/image/六神花露水.webp';">
+                             </a>
+     
+                             <div class="detail">
+                                 <a href="/perfumeDetail/${perfume.id}" target="_blank">
+                                     <h2>${perfume.perfumeName}</h2>
+                                 </a>
+                                 <div class="score-and-stars">
+                                     <div class="score">
+                                         ${scoreText}
+                                     </div>
+                                     <div class="stars">
+                                         ${starsHtml}
+                                     </div>
+                                 </div>
+     
+                                 <div class="info">
+                                     前调：${perfume.qiandiao}<br>
+                                     中调：${perfume.zhongdiao}<br>
+                                     后调：${perfume.houdiao}
+                                 </div>
+     
+                                 <div class="shouchang-button" data-perfume-id="${perfume.id}">
+                                     <img class="heart" src="/static/image/start.webp" style="width: 30px;">
+                                 </div>
+                             </div>
+                         </div>`;
+                     itemsContainer.innerHTML += itemHtml;
+                 });
+     
+                 // 为新添加的收藏按钮绑定事件
+                 document.querySelectorAll('.shouchang-button').forEach(function(button) {
+                     button.removeEventListener('click', handleFavoriteClick); // 移除之前可能添加的事件监听器
+                     button.addEventListener('click', handleFavoriteClick); // 重新添加事件监听器
+                 });
+                 checkAndUpdateFavorites(); 
+             })
+             .catch(error => console.error('Error loading more perfumes:', error));
+     });
+     
+     // 收藏按钮的点击事件处理函数
+     function handleFavoriteClick() {
+         var img = this.querySelector('.heart');
+         var perfumeId = this.getAttribute('data-perfume-id');
+         var isFavorite = img.getAttribute('src') === '/static/image/start-icon.webp';
+     
+         if (!isFavorite) {
+             img.src = '/static/image/start-icon.webp';
+             addFavorite(perfumeId);
+         } else {
+             img.src = '/static/image/start.webp';
+             removeFavorite(perfumeId);
+         }
+     }
+     </script>
+     
  <script>   
    $(document).ready(function() {
        $.get('/get-user-info', function(data) {
@@ -578,6 +602,74 @@
        });
    });
 </script>
-       
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+       // 检查并更新收藏状态
+       checkAndUpdateFavorites();
+   
+       document.querySelectorAll('.shouchang-button').forEach(function(button) {
+           button.addEventListener('click', function() {
+               var img = this.querySelector('.heart');
+               var perfumeId = this.getAttribute('data-perfume-id');
+               var isFavorite = img.getAttribute('src') === '/static/image/start-icon.webp';
+   
+               // 检查登录状态
+               fetch('/check-login')
+                   .then(response => response.json())
+                   .then(data => {
+                       if (data.isLoggedIn) {
+                           // 已登录，处理收藏逻辑
+                           if (!isFavorite) {
+                               img.src = '/static/image/start-icon.webp';
+                               addFavorite(perfumeId);
+                           } else {
+                               img.src = '/static/image/start.webp';
+                               removeFavorite(perfumeId);
+                           }
+                       } else {
+                           // 未登录，跳转到 contact.html
+                           window.location.href = '/contact.html';
+                       }
+                   });
+           });
+       });
+   });
+   
+   function checkAndUpdateFavorites() {
+       fetch('/get-user-favorites')
+           .then(response => response.json())
+           .then(favorites => {
+               favorites.forEach(favoriteId => {
+                   var button = document.querySelector('.shouchang-button[data-perfume-id="' + favoriteId + '"]');
+                   console.log('Button for perfume ID ' + favoriteId + ':', button); // 打印找到的按钮元素
+                   if (button) {
+                       var img = button.querySelector('.heart');
+                       img.src = '/static/image/start-icon.webp';
+                   }
+               });
+           });
+   }
+   
+   function addFavorite(perfumeId) {
+       fetch('/add-favorite', {
+           method: 'POST',
+           headers: {
+               'Content-Type': 'application/json'
+           },
+           body: JSON.stringify({ perfumeId: perfumeId })
+       });
+   }
+   
+   function removeFavorite(perfumeId) {
+       fetch('/remove-favorite', {
+           method: 'POST',
+           headers: {
+               'Content-Type': 'application/json'
+           },
+           body: JSON.stringify({ perfumeId: perfumeId })
+       });
+   }
+   </script>
+   
 </body>
 </html>

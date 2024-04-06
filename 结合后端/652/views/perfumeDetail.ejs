@@ -441,8 +441,8 @@ img {
                     </div>
             </li>
           </ul>
-          <div class="shouchang-button">
-            <img class="heart" src="static/image/start.webp" style="width: 30px;"></img>
+          <div class="shouchang-button" data-perfume-id="<%= perfume.id %>">
+            <img class="heart" src="/static/image/start.webp" style="width: 30px;">
           </div>
         <li class="ajaxodor">
             <br>
@@ -478,10 +478,10 @@ img {
        <i class="bi bi-x-lg"></i>
     </div>
     <div>
-       <img src="/static/picture/logo.png" alt="img" style="height: 50px;width: 100px;">
+       <img src="static/picture/logo.png" alt="img" style="height: 50px;width: 100px;">
     </div>
     <div class="sub__contact__wrapper d-grid">
-   
+       <p style="font-size: x-large;"><strong>欢迎您！</strong><img src="static/image/life.webp" style="width: 50%;height:30px;"></p>
        <a href="index.html" class="side-logo">
           <img src="/static/picture/头像.webp" alt="img" class="side-logo1">
        </a>
@@ -491,20 +491,21 @@ img {
           </li>
        </ul>
     </div>
-    <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2 logout-button">
+ 
+       <a href="/geren.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
+          <span>
+             <i class="bi bi-chevron-right"></i>             
+          </span>
+          <span class="get__text">
+            个人信息
+          </span>
+       </a>
+       <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2 logout-button">
           <span>
              <i class="bi bi-chevron-right"></i>             
           </span>
           <span class="get__text">
              退出登录
-          </span>
-       </a>
-       <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
-          <span>
-             <i class="bi bi-chevron-right"></i>             
-          </span>
-          <span class="get__text">
-             进入首页
           </span>
        </a>
  </div>  
@@ -554,6 +555,74 @@ img {
            }
         }
     </script>
-    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 检查并更新收藏状态
+            checkAndUpdateFavorites();
+        
+            document.querySelectorAll('.shouchang-button').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var img = this.querySelector('.heart');
+                    var perfumeId = this.getAttribute('data-perfume-id');
+                    var isFavorite = img.getAttribute('src') === '/static/image/start-icon.webp';
+        
+                    // 检查登录状态
+                    fetch('/check-login')
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.isLoggedIn) {
+                                // 已登录，处理收藏逻辑
+                                if (!isFavorite) {
+                                    img.src = '/static/image/start-icon.webp';
+                                    addFavorite(perfumeId);
+                                } else {
+                                    img.src = '/static/image/start.webp';
+                                    removeFavorite(perfumeId);
+                                }
+                            } else {
+                                // 未登录，跳转到 contact.html
+                                window.location.href = '/contact.html';
+                            }
+                        });
+                });
+            });
+        });
+        
+        function checkAndUpdateFavorites() {
+            fetch('/get-user-favorites')
+                .then(response => response.json())
+                .then(favorites => {
+                    favorites.forEach(favoriteId => {
+                        var button = document.querySelector('.shouchang-button[data-perfume-id="' + favoriteId + '"]');
+                        console.log('Button for perfume ID ' + favoriteId + ':', button); // 打印找到的按钮元素
+                        if (button) {
+                            var img = button.querySelector('.heart');
+                            img.src = '/static/image/start-icon.webp';
+                        }
+                    });
+                });
+        }
+        
+        function addFavorite(perfumeId) {
+            fetch('/add-favorite', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ perfumeId: perfumeId })
+            });
+        }
+        
+        function removeFavorite(perfumeId) {
+            fetch('/remove-favorite', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ perfumeId: perfumeId })
+            });
+        }
+        </script>
+        
 </body>
 </html>
