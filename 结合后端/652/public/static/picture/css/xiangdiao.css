@@ -1,0 +1,252 @@
+.content {
+    width: 1200px;
+    min-height: 560px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+div {
+    display: block;
+}
+body {
+    overflow-x: hidden;
+    background: #FFF;
+    color: #444;
+    position: relative;
+    font-size: 14px;
+    font-family: 'PingFang SC','Microsoft Yahei','Source Han Sans',SimSun, 'Noto Sans CJK SC', 'Noto Sans CJK',source-han-sans-simplified-c, sans-serif;
+}
+:root {
+    --swiper-navigation-size: 44px;
+}
+:root {
+    --swiper-theme-color: #007aff;
+}
+.odormenu {
+    width: 1200px;
+    height: 34px;
+    overflow: hidden;
+    margin: 24px auto 5px;
+    display: inline-block;
+    font-size: 0px;
+}
+用户代理样式表
+div {
+    display: block;
+}
+body {
+    overflow-x: hidden;
+    background: #FFF;
+    color: #444;
+    position: relative;
+    font-size: 14px;
+    font-family: 'PingFang SC','Microsoft Yahei','Source Han Sans',SimSun, 'Noto Sans CJK SC', 'Noto Sans CJK',source-han-sans-simplified-c, sans-serif;
+}
+:root {
+    --swiper-navigation-size: 44px;
+}
+:root {
+    --swiper-theme-color: #007aff;
+}
+.odormenu ul {
+    margin-left: 15px;
+}
+ul, li, dl, dd, dt {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+.odormenu li {
+    float: left;
+    text-align: center;
+    line-height: 34px;
+    margin-right: 5px;
+    max-width: 100px;
+}
+.odormenu .guoxiangdiao{
+  background: #b1bedd;
+    color: #FFF;
+    float: left;
+}
+.odormenu li a {
+    float: left;
+    overflow: hidden;
+    padding: 0 15px;
+}
+a {
+    text-decoration: none;
+    color: #6c6c6c;
+    font-size: 14px;
+}
+用户代理样式表
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.xdclassify {
+    margin-top: 10px;
+    text-align: center;
+}
+img {
+    border: 0;
+    border-style: none;
+    border-width: 0;
+}
+img[Attributes] Style {
+    width: 800px;
+    aspect-ratio: auto 800 / 800;
+    height: 800px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+}
+用户代理样式表
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+.fragranceText {
+    width: 630px;
+    text-indent: 2em;
+    line-height: 24px;
+    font-size: 14px;
+    margin: 10px auto;
+}
+.content h1 {
+    font-size: 22px;
+    color: #6e7099;
+    padding: 30px 0 8px;
+    list-style: none;
+    font-weight: normal;
+}
+.fragranceText h1 {
+    font-size: 18px;
+    color: #6e7099;
+    text-align: center;
+    margin-left: -2em;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 12px;
+    font-weight: normal;
+}
+.odormenu li a {
+    float: left;
+    overflow: hidden;
+    padding: 0 15px;
+}
+.covertxt{
+    width: 100%;
+    height: 40px;
+    margin-top: -40px;
+    line-height: 40px;
+    color: #6e7099;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    background: #fff;
+    filter: alpha(opacity = 70);
+    opacity: 0.7;
+}
+.noimg odormainimg{
+    width: 1200px;
+    height:200px;
+}
+.x {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        text-indent: 24px; 
+        text-indent: 24px;
+        font-size: 15px;
+    }
+div {
+        display: block;
+    }
+.item {
+        width: 820px;
+        clear: both;
+        margin: 12px 0;
+        float: left;
+        position: relative;
+    }
+.item .imgborder {
+        width: 126px;
+        height: 126px;
+        display: table-cell;
+        font-size: 50px;
+        text-align: center;
+        vertical-align: middle;
+        border: 1px solid #e9e9e9;
+        margin: 10px 20px 10px 0;
+        text-decoration: none;
+        color: #6c6c6c;
+    }
+.item h2 {
+        font-size: 15px;
+        color: #6e7099;
+        font-weight: normal;
+    } 
+.item img {
+        max-width: 105px;
+        max-height: 105px;
+        vertical-align: middle;
+        border: 0;
+        border-style: none;
+        border-width: 0;
+        overflow-clip-margin: content-box;
+    overflow: clip;
+    }
+.item .detail {
+        float: left;
+        margin: -128px 0 0 158px;
+        min-height: 123px;
+        overflow: hidden;
+    }
+.items {
+        margin-left: 226px;
+        margin-top: 18px;
+    }
+    a:-webkit-any-link {
+        cursor: pointer;
+    }
+.star0 {
+        background-image: url(https://img.xssdcdn.com/static/star.png?1);
+        background-repeat: no-repeat;
+        display: inline-block;
+        width: 76px;
+        height: 15px;
+        position: relative;
+        top: 3px;
+    }
+.sa10 {
+        background-position: 0px 0px;
+    }
+.item .score {
+        color: #636363;
+        line-height: 25px;
+        margin: 8px 0;
+    }
+.item .info {
+        line-height: 21px;
+        color: #6c6c6c;
+    }

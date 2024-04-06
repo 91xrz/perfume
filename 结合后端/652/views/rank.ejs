@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <!--<< Required meta tags >>-->
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!--<< Title >>-->
+   <title>寻香悦己-排行榜</title>
+   <!--<< Favcion >>-->
+   <!--<< Bootstrap min.css >>-->
+   <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+   <!--<< Aos animation css >>-->
+   <link rel="stylesheet" href="/static/css/aos.css">
+   <!--<< Main.css >>-->
+   <link rel="stylesheet" href="/static/css/main.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+}
+用户代理样式表
+div {
+    display: block;
+}
+body {
+    overflow-x: hidden;
+    color: #444;
+    position: relative;
+    font-size: 14px;
+    font-family: 'PingFang SC','Microsoft Yahei','Source Han Sans',SimSun, 'Noto Sans CJK SC', 'Noto Sans CJK',source-han-sans-simplified-c, sans-serif;
+}
+:root {
+    --swiper-navigation-size: 44px;
+}
+:root {
+    --swiper-theme-color: #007aff;
+}
+.nose-lists .lists-tit {
+    overflow: hidden;
+    height: 60px;
+
+}
+.nose-lists .lists-tit .lists-cnts {
+    color: #6e7099;
+    margin-bottom: 15px;
+    font-size: 18px;
+    float: left;
+}
+.nose-lists .lists-tit .lists-cnts .lists-tip {
+    color: #6e709a;
+    line-height: 40px;
+    line-height: 40px;
+}
+ul, li, dl, dd, dt {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+.nose-lists .lists li {
+    overflow: hidden;
+}
+.nose-lists .lists li .nose-detail {
+    width: 100%;
+    float: left;
+    border-bottom: 1px solid #eaeaea;
+    position: relative;
+}
+.nose-lists .lists li .nose-detail .nose-avatar {
+    height: 110px;
+    position: relative;
+    width: 66px;
+    display: inline-block;
+}
+.nose-avatar{
+    float: left;
+}
+a {
+    text-decoration: none;
+    color: #6c6c6c;
+    font-size: 14px;
+}
+.nose-detail .nose-avatar img {
+    max-width: 100px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    padding-left: 20px;
+}
+img {
+    border: 0;
+    border-style: none;
+    border-width: 0;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+用户代理样式表
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+a {
+    text-decoration: none;
+    color: #6c6c6c;
+    font-size: 14px;
+}
+用户代理样式表
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+}
+ul, li, dl, dd, dt {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+用户代理样式表
+li {
+    text-align: -webkit-match-parent;
+}
+用户代理样式表
+ul {
+    list-style-type: disc;
+}
+.nose-detail .nose-about {
+    color: #444;
+    font-size: 15px;
+    width: 58%;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 26px 0px 50px 30px;
+    box-sizing: border-box;
+}
+.nose-about{
+    float: left;
+}
+.nose-detail .nose-about div {
+    width: 100%;
+}
+.nose-detail .nose-about div span {
+    cursor: pointer;
+}
+.nose-detail .nose-about .nose-ename {
+    color: #6c6c6c;
+}
+.nose-detail .operate-it {
+    height: 110px;
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.operate-it{
+    float: left;
+}
+.nose-detail .operate-it div {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nose-detail .operate-it .add-icon {
+    cursor: pointer;
+    background-image: url(//img.xssdcdn.com/static/icon/addnoseicon.svg);
+    width: 17px;
+    height: 17px;
+    display: none;
+}
+.bg-cover {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.nose-detail .nose-score {
+    display: flex;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    width: 400px;
+    align-items: center;
+    height: 110px;
+}
+.nose-score{
+    float: left;
+}
+.nose-detail .nose-score .nose-star {
+    float: right;
+    position: relative;
+    width: 75px;
+}
+element.style {
+    width: 68.5px;
+}
+.star0 {
+    background-image: url(https://img.xssdcdn.com/static/star.png?1);
+    background-repeat: no-repeat;
+    /* background-size: 100%; */
+    display: inline-block;
+    width: 76px;
+    height: 15px;
+    position: relative;
+    top: 3px;
+}
+.nose-detail .nose-score .nose-star .star0-gray {
+    background-position: right;
+    position: absolute;
+    top: 2px;
+    z-index: -1;
+    left: 0px;
+}
+.nose-detail .nose-score .nose-star .nose-value {
+    font-size: 15px;
+    color: #6c6c6c;
+    float: right;
+    margin-top: 5px;
+}
+.sque{
+    margin: 0px 0px 0px 120px;
+}
+@media (max-width: 414px){
+    .sque {
+    margin: 0px 0px 0px 26px;
+}
+.nose-detail .nose-score {
+    display: none
+}
+}
+@media screen and (min-width:415px) and (max-width: 767px){
+    .sque {
+    margin: 0px 0px 0px 133px;
+}
+.nose-detail .nose-score .nose-star {
+    width: 213px;
+}
+.star0 {
+    padding-left: 167px;
+}
+}
+@media screen and (min-width:768px) and (max-width: 1199px){
+    .sque {
+    margin: 0px 0px 0px 163px;
+}
+.nose-detail .nose-score {
+    right:-169px;
+}
+}
+    </style>
+</head>
+<body>
+    <%- include('./partials/header') %>
+    <div class="container pt-120 pb-120">
+        <div class="row g-4 justify-content-center">
+           <div class="col-lg-8">
+              <div class="breadcrumnd__wrap text-center">
+                 <h1>
+                    排行榜
+                 </h1>
+                 <ul class="breakcrumnd__cont justify-content-center">
+                    <li>
+                       <a href="/index.html">
+                          Home
+                       </a>
+                    </li>
+                    <li class="white">
+                       /
+                    </li>
+                    <li class="base">
+                        compare
+                    </li>
+                 </ul>
+              </div>
+           </div>
+        </div>
+     </div>
+  </section>
+<div class="sque">
+<div class="nose-lists">
+    <div class="lists-tit">
+        <div class="lists-cnts">
+            <% if (dataType === 'shalong') { %>
+                <span class="lists-tip">全部沙龙香水：</span>
+            <% } else if (dataType === 'shangye') { %>
+                <span class="lists-tip">全部商业香水：</span>
+            <% } %>
+    </div>
+    </div>
+    <ul class="lists">
+        <% noses.forEach(nose => { %>
+            <li class="nose ng-scope">
+                <div class="nose-detail">
+                    <a class="nose-avatar" href="/<%=dataType%>/<%=nose.id%>">
+                        <img src="https://img.xssdcdn.com/perfume/163553.jpg!l"> <!-- 假设这里的图片URL固定 -->
+                    </a>
+                    <a class="nose-about" href="/<%=dataType%>/<%=nose.id%>">
+                        <div class="nose-cname">
+                            <!-- 使用EJS标签替换perfumeName -->
+                            <span class="ng-binding"><%= nose.perfumeName %></span>
+                        </div>
+                    </a>
+                    <div class="operate-it">
+                        <div>
+                            <span class="add_icon bg_cover"></span>
+                        </div>
+                    </div>
+
+                    <div class="nose-score">
+                        <div class="nose-star">
+                            <!-- 根据score计算星星的宽度 -->
+                            <!-- <span class="star0" style="width: <%= (nose.score / 10) * 68.5 %>px;"></span> -->
+                            <span class="star0-gray"></span>
+                            <br>
+                            <!-- 使用EJS标签替换score -->
+                            <% if(nose.score > 0){ %>
+                                <span class="nose-value ng-binding"><%= nose.score %>分</span>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        <% }) %>
+        
+       
+    </ul>
+</div>
+</div>
+<!--<<  sub side bar custom >>-->
+<div class="subside__barmenu sub__contact">
+    <div class="remove__click d-flex justify-content-center align-items-center">
+       <i class="bi bi-x-lg"></i>
+    </div>
+    <div>
+       <img src="static/picture/logo.png" alt="img" style="height: 50px;width: 100px;">
+    </div>
+    <div class="sub__contact__wrapper d-grid">
+   
+       <a href="index.html" class="side-logo">
+          <img src="/static/picture/头像.webp" alt="img" class="side-logo1">
+       </a>
+       <ul>
+          <li>
+             昵称：<input type="text" class="passwordInput" readonly>
+          </li>
+       </ul>
+    </div>
+    <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2 logout-button">
+          <span>
+             <i class="bi bi-chevron-right"></i>             
+          </span>
+          <span class="get__text">
+             退出登录
+          </span>
+       </a>
+       <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
+          <span>
+             <i class="bi bi-chevron-right"></i>             
+          </span>
+          <span class="get__text">
+             进入首页
+          </span>
+       </a>
+ </div>  
+ <!--<<  sub side bar custom >>-->
+ <div class="containerr pt-120 pb-120">
+    <div class="row g-4 justify-content-center">
+       <div class="col-lg-8">
+          <div class="breadcrumnd__wrap text-center">
+             <h1>
+                人生海海，有幸相遇！
+             </h1>
+             <ul class="breakcrumnd__cont justify-content-center">
+                <li>
+                   <a href="index.html">
+                      Home 
+                   </a>
+                </li>
+                <li class="white">
+                   /  
+                </li>
+                <li class="base">
+                    <a href="contact.html">
+                    Join Us
+                    </a>
+                 </li>
+             </ul>
+          </div>
+       </div>
+    </div>
+ </div>
+<div class="progress-wrap">
+      <svg class="progress-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
+         <path fill="#c9f31d" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+      </svg>
+      <i class="bi bi-arrow-90deg-up title topping"></i>
+   </div>
+
+
+
+
+
+ <script data-cfasync="false" src="/static/js/email-decode.min.js"></script>   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.js"></script>
+   <!--<< Viewport Js >>-->
+   <script src="/static/js/viewport.jquery.js"></script>
+   <!--<< Bootstrap Js >>-->
+   <script src="/static/js/bootstrap.min.js"></script>
+   <!--<< Aos animation Js >>-->
+   <script src="/static/js/aos.js"></script>
+   <!--<< Nice Select Js >>-->
+   <script src="/static/js/jquery.nice-select.min.js"></script>
+   <!--<< Swiper Slide Js >>-->
+   <script src="/static/js/swiper-bundle.min.js"></script>
+   <!--<< Swiper Bundle Js >>-->
+   <script src="/static/js/jquery.magnific-popup.min.js"></script>
+   <!--<< magnific popup Js >>-->
+   <script src="/static/js/odometer.min.js"></script>
+   <!--<< Odometer js Js >>-->
+   <script src="/static/js/wow.min.js"></script>
+   <!--<< Wow Animation js >>-->
+   <script src="/static/js/main.js"></script>
+   <!--<< Main.js >>-->
+
+    <script type="text/javascript">
+       var arr = [];
+        $(function() {
+           $(".store dt+dd a").attr("class", 'all-color');
+           $(".store a").click(function (){
+             $(this).parents("dl").children("dd").each(function (){
+                $(this).children("div").children("a").removeClass("all-color")
+             })
+              $(this).attr("class","all-color");
+
+             $(this).parentsUntil("dl").parent().hide();
+             arr.push($(this));
+
+             var val = $(this).html();
+
+             var domItem = `<a
+                             onclick=deletes('${val}')
+                             rel='${val}'
+                             >
+                × <span>${val}</span>
+             </a>`;
+
+             $(".item").append(domItem)
+           })
+        })
+        function deletes(val){
+           $(".filter").find("a[rel='"+val+"']").remove();
+           for(var i=0;i<arr.length;i++){
+              if (arr[i].html() == val ){
+                 arr[i].parentsUntil("dl").parent().show();
+                 arr.splice(i,1);
+                 i--;
+              }else {
+                 arr[i].parentsUntil("dl").parent().hide();
+              }
+           }
+        }
+    </script>
+     <script>   
+        $(document).ready(function() {
+      $.get('/get-user-info', function(data) {
+          if (data.isLoggedIn) {
+              $('.subside__barmenu').find('.passwordInput').val(data.user.name); // 显示用户名
+          }
+      });
+    });
+    
+        $('.subside__barmenu').find('.cmn--btn').last().on('click', function(event) {
+            event.preventDefault(); // 防止链接跳转
+            $.get('/logout', function() {
+                window.location.href = '/contact.html'; // 重定向到首页或登录页面
+            });
+        });
+        
+        </script>
+</body>
+</html>

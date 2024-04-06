@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <!--<< Required meta tags >>-->
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!--<< Title >>-->
+  <title>寻香悦己-调香师</title>
+   <!--<< Favcion >>-->
+   
+   <!--<< Bootstrap min.css >>-->
+   <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+   <!--<< Aos animation css >>-->
+   <link rel="stylesheet" href="/static/css/aos.css">
+   <!--<< Main.css >>-->
+   <link rel="stylesheet" href="/static/css/main.css">
+   <link rel="stylesheet" href="/static/css/tiaoxiangs.css">
+  
+ 
+</head>
+<body>
+
+<%- include('./partials/header') %>
+<div class="container pt-120 pb-120">
+   <div class="row g-4 justify-content-center">
+      <div class="col-lg-8">
+         <div class="breadcrumnd__wrap text-center">
+            <h1>
+               调香师
+            </h1>
+            <ul class="breakcrumnd__cont justify-content-center">
+               <li>
+                  <a href="index.html">
+                     Home 
+                  </a>
+               </li>
+               <li class="white">
+                  /  
+               </li>
+               <li class="base">
+                  magic
+               </li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>
+</section>
+<div class="contents">
+   <div class="txsl">
+      <h1>调香师简介</h1>
+      <div class="desc">
+         <p>创作香水如同创作绘画或音乐。香水并不是化学家将各种香味简单地混在一起的“鸡尾酒”，如同一幅画并不是各种颜色的大杂烩一样。
+         </p>
+         <p>香水调香师创作香水的宗旨，在于表达个人的情感并引起他人的共鸣。香水的创作，如同任何其它艺术作品的创作一样，取决于调香师的想象力。
+         </p>
+         <p>调香师往往被称为“鼻子”，但是这并不是一个恰当的比喻，优秀的调香师需要有丰富的想像力和特殊的嗅觉记忆力，而这是需要通过日常锻炼培养发展起来的，就像钢琴家从不间断地练习各种音阶。
+         </p>
+      </div>
+      <div class="descs">
+         <p>调香师可能需要记忆3500种不同的香气。当然他也必须有一只非常灵敏的"鼻子"，但是相对于创造而言，鼻子更多地只是在测定香气方面帮助调香师。优秀的调香师甚至可以在香水存在之前就能仿佛闻到他意念中的香水。他从这个意念开始，就像画家拿起画笔和颜料之前对他即将创作的画面有一个构想一样。这个意念大多是他以前曾经闻到过（往往在童年）并深有感触的一种特殊香气的记忆。困难在于，调香师怎样才能将上述意念、记忆、情感化为他意欲创造出的一款香水。
+         </p>
+         <p>在调香师最终成功地发现他正在寻找的香水之前，调香师需要耐心，无数次的努力，可能经历许多失败的尝试。所以，香水的创作除了需要灵感，还需要多年的研究开发。想象力与嗅觉记忆会对这种研究有所帮助。
+         </p>
+      </div>
+      <img src="static/image/tiaoxiangshi.png">
+   </div>
+   
+   <div class="txsl_left">
+      <h2>首字母:
+      <!-- 生成字母链接 -->
+      <% for(const letter in sortedPerfumers) { %>
+          <a href="#<%= letter %>"><%= letter %></a>
+      <% } %>
+      </h2>
+      <!-- 遍历sortedPerfumers对象生成调香师列表 -->
+      <% for(const letter in sortedPerfumers) { %>
+      <dl>
+          <a id="<%= letter %>" name="<%= letter %>" class="anchor-target">
+              <dt><%= letter %></dt>
+          </a>
+          <% sortedPerfumers[letter].forEach(perfumer => { %>
+              <dd>
+               <a href="/tiaoxiangshi/perfumerDetail?name=<%= encodeURIComponent(perfumer.perfumer1) %>"><%= perfumer.perfumer1 %></a>
+              </dd>
+          <% }) %>
+      </dl>
+      <% } %>
+  </div>
+
+<!--<<  sub side bar custom >>-->
+<div class="subside__barmenu sub__contact">
+   <div class="remove__click d-flex justify-content-center align-items-center">
+      <i class="bi bi-x-lg"></i>
+   </div>
+   <div>
+      <img src="static/picture/logo.png" alt="img" style="height: 50px;width: 100px;">
+   </div>
+   <div class="sub__contact__wrapper d-grid">
+  
+      <a href="index.html" class="side-logo">
+         <img src="/static/picture/头像.webp" alt="img" class="side-logo1">
+      </a>
+      <ul>
+         <li>
+            昵称：<input type="text" class="passwordInput" readonly>
+         </li>
+      </ul>
+   </div>
+   <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2 logout-button">
+         <span>
+            <i class="bi bi-chevron-right"></i>             
+         </span>
+         <span class="get__text">
+            退出登录
+         </span>
+      </a>
+      <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
+         <span>
+            <i class="bi bi-chevron-right"></i>             
+         </span>
+         <span class="get__text">
+            进入首页
+         </span>
+      </a>
+</div>  
+</div>
+<!--<<  sub side bar custom >>-->
+<div class="containerr pt-120 pb-120">
+   <div class="row g-4 justify-content-center">
+      <div class="col-lg-8">
+         <div class="breadcrumnd__wrap text-center">
+            <h1>
+               人生海海，有幸相遇！
+            </h1>
+            <ul class="breakcrumnd__cont justify-content-center">
+               <li>
+                  <a href="/index.html">
+                     Home 
+                  </a>
+               </li>
+               <li class="white">
+                  /  
+               </li>
+               <li class="base">
+                  <a href="/contact">
+                  Join Us
+                  </a>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>
+   <div class="progress-wrap">
+      <svg class="progress-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
+         <path fill="#c9f31d" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+      </svg>
+      <i class="bi bi-arrow-90deg-up title topping"></i>
+   </div>
+   <!--<< Scroll To Top >>-->
+   <%- include('./partials/jss') %>
+</body>
+</html>

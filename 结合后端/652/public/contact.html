@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <!--<< Required meta tags >>-->
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!--<< Title >>-->
+   <title>寻香悦己-登录/注册</title>
+   <!--<< Favcion >>-->
+   
+   <!--<< Bootstrap min.css >>-->
+   <link rel="stylesheet" href="static/css/bootstrap.min.css">
+   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-7ymO4nGrkm372HoSbq1OY2DP4pEZnMiA+E0F3zPr+JQQtQ82gQ1HPY3QIVtztVua" crossorigin="anonymous"></script>
+      -->
+   <!--<< Aos animation css >>-->
+   <link rel="stylesheet" href="static/css/aos.css">
+   <!--<< Main.css >>-->
+   <link rel="stylesheet" href="static/css/main.css">
+   <link rel="stylesheet" type="text/css" href="static/css/style.css">
+  <style>
+      .win{
+         padding: 10px 50px 20px;
+         left: 30%;
+         top: 35%;
+         align-content: center;
+      }
+   .win p{
+      font-size: 24px;
+   }
+      #dog{
+         border-radius: 10px;
+         border-color: #e5c7ca;
+      }
+      #dog1{
+         border-radius: 10px;
+         border-color: #e5c7ca;
+      }
+      .jizhu{
+         margin-left:-137px;
+         margin-top: 14PX;
+         margin-bottom: -18px;
+      }
+   </style>
+  
+</head>
+<body>
+
+<!--<< Preloader >>-->
+<div class="preloader__matias">
+   <div class="box text-center">
+      <div class="matias mb-10">
+         <img src="/static/picture/Preloader.png" alt="img">
+      </div>
+      <span class="fz-30 mati fw-600 text-uppercase">
+         寻香悦己
+      </span>
+   </div>
+</div>
+<!--<< Preloader >>--> 
+
+
+
+
+
+<!--<< banner >>-->
+<section class="breadcrumnd__section">
+   <!--<< Header v-1 >>-->
+   <header class="header-section">
+      <div class="containerr">
+         <div class="header-wrapper">
+            <div class="main__logo">
+               <a href="index.html" class="logo">
+                  <img src="/static/picture/logo.png" alt="logo">
+               </a>
+            </div>
+                        <ul class="main-menu">
+               <li>
+                  <a href="index.html">
+                     首页
+                  </a>
+               </li>
+               <li>
+                  <a href="/brand">
+                     品牌
+                  </a>
+               </li>
+               <li class="sub-menu">
+                  <a href="service.html">
+                     香调
+                  </a>
+               </li>
+               <div class="sub-menu" style="width: 96px;height: 100px;text-align: center;line-height: 100px;background:url(./static/image/21.png) center no-repeat;">
+                  <a href="service-details.html" style="font-size: 20px;font-family: SimHei;color: #f1aeb5;margin-bottom: 20px;">
+                       寻香
+                     </a>
+
+               </div>
+               <li>
+                  <a href="/tiaoxiangshi">
+                     调香师
+                  </a>
+               </li>
+               <li class="sub-menu" class="subtwohober">
+                   <a href="blog.html">排行榜</a>
+               </li>
+               <li class="sub-menu" class="subtwohober">
+                  <a href="/community">社区</a>
+               </li>
+            </ul>
+           
+               <div id="userAvatar" style="display: none;"class="remove__click">
+                  <img src="/static/image/头像.png"  >
+              
+              </div>
+                  <div id="userName"></div>
+               <div class="header-bar d-lg-none">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+               </div>
+               <div class="remove__click">
+                  <i class="bi bi-list"></i>
+               </div>
+            </div>
+         </div>
+      </div>
+   </header>
+   <!--<< Header v-1 >>-->
+   <div class="containerr pt-120 pb-120">
+      <div class="row g-4 justify-content-center">
+         <div class="col-lg-8">
+            <div class="breadcrumnd__wrap text-center">
+               <h1>
+                  每个开始，都会带来无限希望和太多未知的惊喜！
+               </h1>
+               <ul class="breakcrumnd__cont justify-content-center">
+                  <li>
+                     <a href="index.html">
+                        Home 
+                     </a>
+                  </li>
+                  <li class="white">
+                     /  
+                  </li>
+                 
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!--<< banner >>-->
+
+   <div id="messageContainer"></div>
+   <div id="loginMessageContainer"></div>
+   <div id="alertContainer"></div>
+   <div id="registrationMessageContainer"></div>
+
+<!--<< Contact >>-->
+<div class="container right-panel-active">
+
+
+   <div class="container_from container--signup">
+       <form action="#" class="form" id="form1">
+           <h2 class="from_title">注册账号</h2>
+           <input type="text" placeholder="User" class="input">
+           <input type="email" placeholder="Email" class="input">
+           <input type="password" placeholder="Password" class="input">
+           <button class="btn">点击注册</button>
+       </form>
+   </div>
+
+   <div class="container_from container--signin">
+       <form action="#" class="form" id="form2">
+           <h2 class="from_title">欢迎登录</h2>
+           <input type="text" placeholder="User" class="input">
+           <input type="password" placeholder="Password" class="input">
+           <a href="#" class="link">忘记密码？</a>
+           <button class="btn">登录</button>
+          
+       </form>
+   </div>
+
+
+   <div class="container_overlay">
+       <div class="overlay">
+           <div class="overlay_panel overlay--left">
+               <button class="btn" id="signin">已有账号，直接登录</button>
+           </div>
+
+           <div class="overlay_panel overlay--right">
+               <button class="btn" id="signup">没有账号，点击注册</button>
+           </div>
+       </div>
+   </div>
+
+
+</div>
+
+<!--<< Contact >>-->
+<!--<<  sub side bar custom >>-->
+<div class="subside__barmenu sub__contact">
+   <div class="remove__click d-flex justify-content-center align-items-center">
+      <i class="bi bi-x-lg"></i>
+   </div>
+   <div>
+      <img src="static/picture/logo.png" alt="img" style="height: 50px;width: 100px;">
+   </div>
+   <div class="sub__contact__wrapper d-grid">
+  
+      <a href="index.html" class="side-logo">
+         <img src="/static/picture/头像.webp" alt="img" class="side-logo1">
+      </a>
+      <ul>
+         <li>
+            昵称：<input type="text" class="passwordInput" readonly>
+         </li>
+      </ul>
+   </div>
+   <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2 logout-button">
+         <span>
+            <i class="bi bi-chevron-right"></i>             
+         </span>
+         <span class="get__text">
+            退出登录
+         </span>
+      </a>
+      <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
+         <span>
+            <i class="bi bi-chevron-right"></i>             
+         </span>
+         <span class="get__text">
+            进入首页
+         </span>
+      </a>
+</div>  
+
+</div>
+</div>
+<!--<<  sub side bar custom >>-->
+<div class="containerr pt-120 pb-120">
+   <div class="row g-4 justify-content-center">
+      <div class="col-lg-8">
+         <div class="breadcrumnd__wrap text-center">
+            <h1>
+               人生海海，有幸相遇！
+            </h1>
+            <ul class="breakcrumnd__cont justify-content-center">
+               <li>
+                  <a href="index.html">
+                     Home 
+                  </a>
+               </li>
+               <li class="white">
+                  /  
+               </li>
+               <li class="base">
+                  <a href="contact.html">
+                  Join Us
+                  </a>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>
+<!--<<  sub side bar custom >>-->
+   <!--<< Scroll To Top >>-->
+   <div class="progress-wrap">
+      <svg class="progress-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
+         <path fill="#c9f31d" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+      </svg>
+      <i class="bi bi-arrow-90deg-up title topping"></i>
+   </div>
+   <!--<< Scroll To Top >>-->
+
+   <!--<< Jquery Latest >>-->
+   <script data-cfasync="false" src="static/js/email-decode.min.js"></script><script src="static/js/jquery-3.7.0.min.js"></script>
+   <!--<< Viewport Js >>-->
+   <script src="static/js/viewport.jquery.js"></script>
+   <!--<< Bootstrap Js >>-->
+   <script src="static/js/bootstrap.min.js"></script>
+   <!--<< Aos animation Js >>-->
+   <script src="static/js/aos.js"></script>
+   <!--<< Nice Select Js >>-->
+   <script src="static/js/jquery.nice-select.min.js"></script>
+   <!--<< Swiper Slide Js >>-->
+   <script src="static/js/swiper-bundle.min.js"></script>
+   <!--<< Swiper Bundle Js >>-->
+   <script src="static/js/jquery.magnific-popup.min.js"></script>
+   <!--<< magnific popup Js >>-->
+   <script src="static/js/odometer.min.js"></script>
+   <!--<< Odometer js Js >>-->
+   <script src="static/js/wow.min.js"></script>
+   <!--<< Wow Animation js >>-->
+   <script src="static/js/main.js"></script>
+   <!--<< Main.js >>-->
+   <script src="static/js/script.js"></script>
+   <script>
+// 注册表单处理
+document.getElementById('form1').addEventListener('submit', function(event) {
+    event.preventDefault(); // 阻止表单默认提交
+    // 注意：这里使用了 class 选择器，因为您的 input 没有 name 属性
+    var user = document.querySelector('#form1 .input[type="text"]').value;
+    var email = document.querySelector('#form1 .input[type="email"]').value;
+    var password = document.querySelector('#form1 .input[type="password"]').value;
+    if (!user.trim()) {
+    var alertContainer = document.getElementById('alertContainer');
+    alertContainer.innerHTML = `<div class="alert alert-danger" role="alert">
+                                  用户名不能为空！
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="float: right;">
+    <span aria-hidden="true">&times;</span>
+  </button>
+                                </div>`;
+    return; // 中断函数执行
+}
+if (!email.trim()) {
+    var alertContainer = document.getElementById('alertContainer');
+    alertContainer.innerHTML = `<div class="alert alert-danger" role="alert">
+                                  电子邮件不能为空！
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+                                </div>`;
+    return; // 中断函数执行
+}
+if (!password.trim()) {
+    var alertContainer = document.getElementById('alertContainer');
+    alertContainer.innerHTML = `<div class="alert alert-danger" role="alert">
+                                  密码不能为空！
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+                                </div>`;
+                              }
+    // 使用 fetch 发送请求
+    fetch('/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({user, email, password})
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // 更新页面内容
+             var messageContainer = document.getElementById('registrationMessageContainer');
+            messageContainer.innerHTML = `<div class="alert alert-success" role="alert">
+                                      注册成功，即将跳转到主页…
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+                                  </div>`;
+            setTimeout(function() {
+            window.location.href = '/index.html';
+        }, 3000); // 2000毫秒等于2秒
+        } else {
+            alert( data.message);
+        }
+    });
+});
+
+// 登录表单处理
+document.getElementById('form2').addEventListener('submit', function(event) {
+    event.preventDefault(); // 防止表单默认提交行为
+
+    var name = document.querySelector('#form2 .input[type="text"]').value; // 获取用户名
+    var password = document.querySelector('#form2 .input[type="password"]').value; // 获取密码
+
+    fetch('/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({name, password}) // 确保这里的字段名与后端期望的一致
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('网络问题或服务器错误');
+        }
+        return response.json(); // 解析 JSON 数据
+    })
+    .then(data => {
+        if (data.success) {
+         var messageContainer = document.getElementById('messageContainer');
+            messageContainer.innerHTML = `
+              <div class="alert alert-success" role="alert">
+                登录成功！欢迎回来${name}！即将跳转到主页…
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+              </div>`;
+              setTimeout(function() {
+            window.location.href = '/index.html';
+        }, 3000); // 2000毫秒等于2秒
+        } else {
+         var messageContainer = document.getElementById('messageContainer');
+            messageContainer.innerHTML = `<div class="alert alert-primary" role="alert">
+              ${data.message} <a href="#" class="alert-link">请重试</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+            </div>`;
+        }
+    })
+    .catch(error => {
+      var messageContainer = document.getElementById('messageContainer');
+        messageContainer.innerHTML = `<div class="alert alert-danger" role="alert">
+          登录失败，请稍后再试。 <a href="#" class="alert-link">请重试</a>.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+        </div>`;
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    // 检查用户是否已经登录
+    fetch('/check-login')
+    .then(response => response.json())
+    .then(data => {
+        if (data.isLoggedIn) {
+           
+            // updateUserInterface(data.user); // 假设从服务器返回了用户信息
+            document.getElementById('form2').style.display = 'none'; // 隐藏登录表单
+            // 使用自定义警告替代 alert
+            var messageContainer = document.getElementById('loginMessageContainer');
+            messageContainer.innerHTML = `
+            <div class="alert alert-success" role="alert">
+                您已经成功登录，无需再次登录！
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="float: right;">
+          <span aria-hidden="true">&times;</span>
+                           </button>
+              </div>`;
+         }
+    })
+    .catch(error => {
+      console.error(error);
+        // 可以选择在这里显示一些错误信息或进行其他错误处理
+        var messageContainer = document.getElementById('loginMessageContainer');
+        messageContainer.innerHTML = `
+        <div class="alert alert-danger" role="alert">
+          检查登录状态失败，请刷新页面重试。
+        </div>`;
+    });
+});
+      
+   </script>
+</body>
+</html>

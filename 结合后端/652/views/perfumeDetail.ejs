@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!--<< Title >>-->
+   <title>寻香悦己-香水</title>
+   <!--<< Favcion >>-->
+   <!--<< Bootstrap min.css >>-->
+   <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+   <!--<< Aos animation css >>-->
+   <link rel="stylesheet" href="/static/css/aos.css">
+   <!--<< Main.css >>-->
+   <link rel="stylesheet" href="/static/css/main.css">
+    <style>
+     
+.itemMain {
+    float: left;
+    padding-left: 63px;
+    min-height: 80vh; 
+}
+ul, li, dl, dd, dt {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+用户代理样式表
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+body {
+    overflow-x: hidden;
+    /* background: url(../public/Background.png); */
+    color: #444;
+    position: relative;
+    font-size: 14px;
+    font-family: 'PingFang SC','Microsoft Yahei','Source Han Sans',SimSun, 'Noto Sans CJK SC', 'Noto Sans CJK',source-han-sans-simplified-c, sans-serif;
+}
+:root {
+    --swiper-navigation-size: 44px;
+}
+:root {
+    --swiper-theme-color: #007aff;
+}
+.itemMain h1:first-child {
+    padding: 10px 0px 0px;
+    margin: 20px 0;
+}
+.content h1 {
+    font-size: 22px;
+    color: #6e7099;
+    padding: 30px 0 8px;
+    list-style: none;
+    font-weight: normal;
+}
+.itemMain h1 {
+    line-height: 30px;
+    font-size: 20px;
+    color: #6e7099;
+    margin: 5px 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 12px;
+    font-weight: normal;
+}
+.itemMain .imgborder1 {
+    width: 242px;
+    height: 242px;
+    display: table-cell;
+    font-size: 118px;
+    text-align: center;
+    vertical-align: middle;
+    float: left;
+    margin-bottom: 15px;
+}
+.itemMain .imgborder1 img {
+    max-width: 242px;
+    max-height: 242px;
+    vertical-align: middle;
+}
+img {
+    border: 0;
+    border-style: none;
+    border-width: 0;
+}
+.itemMain ul {
+    overflow: hidden;
+}
+.item_info {
+    width: 246px;
+    float: left;
+    line-height: 28px;
+    margin: 0 30px 0 25px;
+}
+ul, li, dl, dd, dt {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+用户代理样式表
+ul ul {
+    list-style-type: circle;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+用户代理样式表
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+用户代理样式表
+ul {
+    list-style-type: disc;
+}
+.itemMain li {
+    font-size: 15px;
+    clear: both;
+    overflow: hidden;
+    margin-top: 0px;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+.item_info li a {
+    font-size: 15px;
+}
+.item_info a {
+    color: #6c6c6c;
+}
+a {
+    text-decoration: none;
+    color: #6c6c6c;
+    font-size: 14px;
+}
+.item_info li a {
+    font-size: 15px;
+}
+.item_info a {
+    color: #6c6c6c;
+}
+a {
+    text-decoration: none;
+    color: #6c6c6c;
+    font-size: 14px;
+}
+.item_score {
+    width: 220px;
+    float: left;
+    line-height: 25px;
+    font-size: 13px;
+}
+.item_score .score-status {
+    position: relative;
+    height: 50px;
+}
+.item_score .score-status .score {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 50px;
+    height: 50px;
+    font-size: 32px;
+    line-height: 50px;
+    text-align: center;
+}
+.item_score .score {
+    font-size: 15px;
+    color: #555;
+}
+.item_score span {
+    min-width: 22px;
+}
+.item_score .score-status .score-desc {
+    padding-left: 60px;
+}
+.item_score span {
+    min-width: 22px;
+}
+.sa9, .sa10 {
+    background-position: 0px 0px;
+}
+.star1 {
+    background-image: url(//img.xssdcdn.com/static/star2.png?1);
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 75px;
+    height: 14px;
+    position: relative;
+    top: 1px;
+}
+.item_score .people {
+    display: inline-block;
+    margin-bottom: 2px;
+}
+.item_score span {
+    min-width: 22px;
+}
+.item_score .starnum {
+    font-size: 13px;
+    color: #6c6c6c;
+    width: 28px;
+    text-align: right;
+    display: inline-block;
+}
+.outbar {
+    height: 12px;
+    width: 80px;
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    margin-left: 10px;
+}
+element.style {
+    width: 50.852119110216%;
+}
+.inbar {
+    height: 12px;
+    display: block;
+    background: #f5e5c4;
+}
+.nows {
+    font-size: 13px;
+    float: right;
+    margin-right: -33px;
+    position: relative;
+    top: -7px;
+}
+.itemMain li .dd, .scrolltitle {
+    font-size: 13px;
+    padding-left: 5px;
+}
+.scrolltitle {
+    margin-top: 10px;
+    height: 16px;
+    float: left;
+}
+element.style {
+    padding: 0px;
+    margin: 0px;
+    width: 194px;
+    border: 1px solid #CC99CC;
+}
+.dd .outbar {
+    border: 1px solid #f0f0f0 !important;
+}
+.outbar {
+    height: 12px;
+    width: 80px;
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    margin-left: 10px;
+}
+element.style {
+    padding: 0px;
+    margin: 0px;
+    width: 70%;
+}
+.inbar {
+    height: 12px;
+    display: block;
+    background: #f5e5c4;
+}
+.itemMain .ajaxodor {
+    font-size: 13px;
+    margin: 48px 0 50px 0;
+}
+.itemMain h5 {
+    margin-bottom: 24px;
+    font-size: 18px;
+    color: #6e7099;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 12px;
+    font-weight: normal;
+}
+element.style {
+    display: block;
+}
+.itemMain .odor-lists {
+    display: none;
+}
+.itemMain .ajaxodor a {
+    display: block;
+    float: left;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    margin: 0 22.5px 40px 0;
+}
+a {
+    text-decoration: none;
+    color: #6c6c6c;
+    font-size: 14px;
+}
+.itemMain .ajaxodor img {
+    width: 75px;
+    height: 75px;
+    filter: opacity(0.88);
+}
+img {
+    border: 0;
+    border-style: none;
+    border-width: 0;
+}
+.itemMain .ajaxodor a p {
+    max-width: 75px!important;
+    height: 16px;
+    font-size: 14px;
+}
+.score-and-stars {
+  display: flex; /* 启用Flexbox */
+  align-items: center; /* 垂直居中 */
+  justify-content: flex-start; /* 从行的开始处对齐项目 */
+  gap: 10px; /* 设置分数和星星之间的间距 */
+}
+.star {
+  width: 30px; /* 设置图片宽度为20px */
+  height: auto; /* 高度自动，保持图片比例 */
+}
+
+    </style>
+
+</head>
+<body>
+    <%- include('./partials/header') %>
+   <!--<< Header v-1 >>-->
+   <div class="container pt-120 pb-120">
+      <div class="row g-4 justify-content-center">
+         <div class="col-lg-8">
+            <div class="breadcrumnd__wrap text-center">
+               <h1>
+                  香水
+               </h1>
+               <ul class="breakcrumnd__cont justify-content-center">
+                  <li>
+                     <a href="/index.html">
+                        Home
+                     </a>
+                  </li>
+                  <li class="white">
+                     /
+                  </li>
+                  <li class="base">
+                     etiqueta
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<div>
+    <ul class="itemMain">
+        <h1><%= perfume.perfumeName %></h1>
+        <div class="imgborder1">
+            <img src="/static/picture/perfume/<%= perfume.id %>.png" class="noxx" onerror="this.onerror=null;this.src='/static/picture/image/六神花露水.webp';"> <!-- 假设图片URL存储在perfume.image字段 -->
+        </div>
+        <ul class="item_info">
+            <li>品牌:
+            <a><%= perfume.brand %></a>
+                <br>
+                香调:
+                <a><%= perfume.xiangdiao %></a>
+                <br>
+                前调:
+                <% perfume.qiandiao.split(' ').forEach(function(note) { %>
+                    <a><%= note %></a>
+                <% }); %>
+                <br>
+                中调:
+                <% perfume.zhongdiao.split(' ').forEach(function(note) { %>
+                    <a><%= note %></a>
+                <% }); %>
+                <br>
+                后调:
+                <% perfume.houdiao.split(' ').forEach(function(note) { %>
+                    <a><%= note %></a>
+                <% }); %>
+                <br>
+                属性:
+                <a><%= perfume.shuxing %></a>
+                <br>
+                调香师:
+                <a><%= perfume.perfumer %></a>
+                <br>
+                标签：
+                <% perfume.biaoqian.split(' ').forEach(function(tag) { %>
+                    <a><%= tag %></a>
+                <% }); %>
+            </li>
+        </ul>
+        <ul class="item_score">
+            <li>
+                <div class="score-and-stars">
+                    <div class="score">
+                        <%= perfume.score ? perfume.score + '分' : '暂无' %>
+                    </div>
+                    <div class="stars">
+                       <% 
+                         var fullStars = Math.floor(perfume.score / 2); 
+                         var halfStar = perfume.score % 2 >= 1.5; 
+                         var partialStar = perfume.score % 2 >= 1 && perfume.score % 2 < 1.5; 
+                         var starSlots = 5; 
+                       %>
+                       <% for(var i = 0; i < fullStars; i++) { %>
+                          <img src="/static/image/4.png" alt="Star" class="star"> <!-- 满星 -->
+                        <% } %>
+                        <% if(partialStar) { %>
+                          <img src="/static/image/3.png" alt="Star" class="star"> <!-- 1到1.5分的星星 -->
+                        <% } %>
+                        <% if(halfStar) { %>
+                          <img src="/static/image/2.png" alt="Star" class="star"> <!-- 0到1分的星星 -->
+                        <% } %>
+                        <% for(var i = fullStars + (partialStar ? 1 : 0) + (halfStar ? 1 : 0); i < starSlots; i++) { %>
+                          <img src="/static/image/1.png" alt="Star" class="star"> <!-- 空星填充 -->
+                        <% } %>
+                     </div>
+                    </div>
+            </li>
+          </ul>
+          <div class="shouchang-button">
+            <img class="heart" src="static/image/start.webp" style="width: 30px;"></img>
+          </div>
+        <li class="ajaxodor">
+            <br>
+            <h5>最明显的气味</h5>
+            <div class="odor-lists" style="display: block">
+                <% if (perfume.qiwei) { 
+                  
+                    var odors = perfume.qiwei.replace(/\([^)]+\)/g, '').split(/\s+/);
+                    odors.forEach(function(odorName) {
+                     odorName = odorName.trim();
+                        if (odorName) {
+                %>
+                            <a class="addodor ng-scope" ng-click="postodor()">
+                                <!-- 动态生成气味对应的图片路径 -->
+                                <img src="/static/image/<%= odorName %>.webp" onerror="this.onerror=null;this.src='/static/image/default.webp';">
+                                <br>
+                                <p>
+                                    <span class="ng-binding"><%= odorName %></span>
+                                </p>
+                            </a>
+                <% 
+                        }
+                    });
+                } %>
+            </div>
+        </li>
+        
+    </ul>
+    
+</div>
+<div class="subside__barmenu sub__contact">
+    <div class="remove__click d-flex justify-content-center align-items-center">
+       <i class="bi bi-x-lg"></i>
+    </div>
+    <div>
+       <img src="/static/picture/logo.png" alt="img" style="height: 50px;width: 100px;">
+    </div>
+    <div class="sub__contact__wrapper d-grid">
+   
+       <a href="index.html" class="side-logo">
+          <img src="/static/picture/头像.webp" alt="img" class="side-logo1">
+       </a>
+       <ul>
+          <li>
+             昵称：<input type="text" class="passwordInput" readonly>
+          </li>
+       </ul>
+    </div>
+    <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2 logout-button">
+          <span>
+             <i class="bi bi-chevron-right"></i>             
+          </span>
+          <span class="get__text">
+             退出登录
+          </span>
+       </a>
+       <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
+          <span>
+             <i class="bi bi-chevron-right"></i>             
+          </span>
+          <span class="get__text">
+             进入首页
+          </span>
+       </a>
+ </div>  
+<div class="progress-wrap">
+      <svg class="progress-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
+         <path fill="#c9f31d" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+      </svg>
+      <i class="bi bi-arrow-90deg-up title topping"></i>
+   </div>
+   <%- include('./partials/jss') %>
+<script typw="text/javascript" src="jquery-3.7.1.min.js"></script>
+    <script type="text/javascript">
+       var arr = [];
+        $(function() {
+           $(".store dt+dd a").attr("class", 'all-color');
+           $(".store a").click(function (){
+             $(this).parents("dl").children("dd").each(function (){
+                $(this).children("div").children("a").removeClass("all-color")
+             })
+              $(this).attr("class","all-color");
+
+             $(this).parentsUntil("dl").parent().hide();
+             arr.push($(this));
+
+             var val = $(this).html();
+
+             var domItem = `<a
+                             onclick=deletes('${val}')
+                             rel='${val}'
+                             >
+                <span>${val}</span>
+             </a>`;
+
+             $(".item").append(domItem)
+           })
+        })
+        function deletes(val){
+           $(".filter").find("a[rel='"+val+"']").remove();
+           for(var i=0;i<arr.length;i++){
+              if (arr[i].html() == val ){
+                 arr[i].parentsUntil("dl").parent().show();
+                 arr.splice(i,1);
+                 i--;
+              }else {
+                 arr[i].parentsUntil("dl").parent().hide();
+              }
+           }
+        }
+    </script>
+    
+</body>
+</html>

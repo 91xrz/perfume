@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <!--<< Required meta tags >>-->
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!--<< Title >>-->
+   <title>寻香悦己-社区</title>
+   <!--<< Favcion >>-->
+   
+   <!--<< Bootstrap min.css >>-->
+   <link rel="stylesheet" href="static/css/bootstrap.min.css">
+   <!--<< Aos animation css >>-->
+   <link rel="stylesheet" href="static/css/aos.css">
+   <!--<< Main.css >>-->
+   <link rel="stylesheet" href="static/css/main.css">
+   <style>
+    
+
+div {
+    display: block;
+}
+body {
+   background: url(Background.png);
+    overflow-x: hidden;
+    color: #444;
+    position: relative;
+    font-size: 14px;
+    font-family: 'PingFang SC','Microsoft Yahei','Source Han Sans',SimSun, 'Noto Sans CJK SC', 'Noto Sans CJK',source-han-sans-simplified-c, sans-serif;
+}
+:root {
+    --swiper-navigation-size: 44px;
+}
+:root {
+    --swiper-theme-color: #007aff;
+}
+.sq_content {
+    width: 910px;
+    padding-top: 10px;
+    position: relative;
+    margin: 0 auto;
+}
+.sq_content .type.active {
+    background: #79c8d8;
+    color: #fff;
+}
+.sq_content .type {
+    display: block;
+    float: left;
+    width: 132px;
+    height: 35px;
+    font-size: 21px;
+    line-height: 32px;
+    text-align: center;
+    margin-top: 22px;
+    margin-bottom: 20px;
+}
+.sq_content .type {
+    cursor: pointer;
+}
+a {
+    text-decoration: none;
+}
+.invitation_bar {
+    background-color: #B1BEDD !important;
+    margin: 25px 0px;
+    width: 36px;
+    height: 37px;
+    float: right;
+    cursor: pointer;
+    background-size: 40% 50% !important;
+    background-image: url(https://img.xssdcdn.com/static/stopic_icon3.png);
+    background-repeat: no-repeat !important;
+    background-position: center 45% !important;
+}
+element.style {
+    position: absolute;
+}
+.invitation_search {
+    height: 37px;
+    margin: 25px 0px;
+    width: 253px;
+    right: 36px;
+    padding-left: 10px;
+    color: #b2b2b2;
+    border: 1px solid #ddd !important;
+    position: absolute;
+}
+input, textarea {
+    outline: none;
+    resize: none;
+}
+input {
+    font-size: 12px;
+    vertical-align: middle;
+       margin-right: 3px;
+}
+input, textarea {
+    outline: none;
+    resize: none;
+}
+.sq_content .tag {
+    width: 910px;
+    height: 90px;
+    overflow: hidden;
+}
+.sq_content .tag img {
+    float: left;
+    width: 180px;
+    height: 90px;
+    float: left;
+}
+img {
+    border: 0;
+    border-style: none;
+    border-width: 0;
+}
+.sq_content ._new {
+    background: url(	https://img.xssdcdn.com/static/topic/new_b.jpg) 0 0 no-repeat;
+    background-size: 100%;
+}
+.sq_content .tag_right {
+    width: 730px;
+    height: 90px;
+    float: left;
+    position: relative;
+}
+.sq_content .button {
+    width: 80px;
+    height: 30px;
+    border: 1px solid #e0e0e0;
+    color: #444;
+    font-size: 21px;
+    float: right;
+    margin-right: 30px;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    border-radius: 15px;
+    text-align: center;
+    line-height: 30px;
+}
+.sq_content .button {
+    float: left;
+    width: 112px;
+    height: 31px;
+    line-height: 21px;
+    text-align: center;
+    background: #fff;
+    display: block;
+    color: #4b95a4;
+    cursor: pointer;
+    padding-top: 4px;
+}
+a {
+    text-decoration: none;
+    color: #6c6c6c;
+    font-size: 14px;
+}
+.sq_content .tag_right div {
+    font-size: 15px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.sq_content .tag_right p {
+    font-size: 13px;
+    color: #6c6c6c;
+    margin-left: 20px;
+    margin-top: 18px;
+}
+.showmenu {
+    cursor: pointer;
+}
+element.style {
+    margin-top: 0px;
+}
+.dlglist {
+    margin-bottom: 50px;
+}
+ul, li, dl, dd, dt {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.sq_content .dlglist li {
+    border-bottom: 1px solid #f0f0f0;
+    clear: both;
+    height: 71px;
+    position: relative;
+    padding-top: 24px;
+    padding-bottom: 5px;
+}
+.sq_content .dlglist .left {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 37%;
+}
+.sq_content .imgborder {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    float: left;
+    margin-top: 0px;
+    margin-right: 10px;
+}
+.sq_content ul a {
+    color: #c5e8ef;
+}
+a {
+    text-decoration: none;
+    color: #6c6c6c;
+    font-size: 14px;
+}
+.sq_content .imgborder img {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+}
+img {
+    border: 0;
+    border-style: none;
+    border-width: 0;
+}
+.sq_content .c1 {
+    width: 800px;
+}
+.sq_content .c1 a {
+    font-size: 15px;
+    color: #444;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+a {
+   text-decoration: none;
+}
+.sq_content .c3 {
+    font-size: 13px;
+    color: #999;
+    margin-top: 2px;
+    margin-left: 36px;
+    position: absolute;
+    bottom: 19px;
+    right: 0;
+    display: flex;
+    align-items: center;
+}
+.sq_content .c3 .replyicon {
+    background-image: url(https://img.xssdcdn.com/static/icon/social_comment.svg);
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 3px;
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.sq_content .c4 {
+    position: absolute;
+    top: 12px;
+    right: 0px;
+    font-size: 13px;
+    color: #999;
+}
+.next_news {
+    clear: both;
+    text-align: center;
+    padding: 20px 0;
+    padding-top: 56px;
+}
+.next_news li {
+    display: inline-block;
+    overflow: visible;
+    border: none;
+    margin-right: 4px;
+}
+.next_news .this {
+    color: #fff !important;
+    background: rgb(236, 180, 189);
+}
+.next_news li a {
+    font-size: 13px;
+}
+.next_news a {
+    border: 1px solid #eee;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+a {
+    text-decoration: none;
+}
+.next_news li a {
+    font-size: 13px;
+}
+.sq_content ul a {
+    color: #6e7099;
+}
+.next_news a {
+    background: #fff;
+    color: #444;
+    border: 1px solid #eee;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+@media screen and (max-width:414px){
+   .content {
+    width: 300px;
+    margin: 0px 37px;
+    overflow: hidden;
+}
+.sq_content {
+    width: 300px;
+    padding-top: 10px;
+    position: relative;
+    margin: 0 0;
+}
+    .sq_content .type {
+    float: none; 
+} 
+.next_news li {
+    margin-right: -2px;
+}
+.sq_content .tag img {
+    float: left;
+    width: 300px;
+    height: 90px;
+    float: left;
+}
+.invitation_search {
+   width: 269px;
+}
+.sq_content .tag {
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+}
+.sq_content .tag_right {
+    width: 300px;
+    padding-top: 16px;
+}
+.sq_content .button {
+   top:37px;
+}
+}
+@media screen and (min-width:415px) and (max-width: 767px){
+   .content {
+    width: 600px;
+    margin: 0px 53px;
+    overflow: hidden;
+}
+.sq_content {
+    width: 600px;
+    padding-top: 10px;
+    position: relative;
+    margin: 0 0;
+}
+    .sq_content .type {
+    float: none; 
+} 
+.next_news li {
+    margin-right: -2px;
+}
+.sq_content .tag img {
+    float: left;
+    width: 600px;
+    height: 90px;
+    float: left;
+}
+.invitation_search {
+   width: 565px;
+}
+.sq_content .tag {
+    width: 600px;
+    height: 200px;
+    overflow: hidden;
+}
+.sq_content .tag_right {
+    width: 600px;
+    padding-top: 16px;
+}
+.sq_content .button {
+   top:76px;
+}
+}
+@media screen and (min-width:768px) and (max-width: 1199px){
+   .content {
+    width: 800px;
+    margin: 0px 53px;
+    overflow: hidden;
+}
+.sq_content {
+    width: 800px;
+    padding-top: 10px;
+    position: relative;
+    margin: 0 0;
+}
+    .sq_content .type {
+    float: none; 
+} 
+.next_news li {
+    margin-right: -2px;
+}
+.sq_content .tag img {
+    float: left;
+    width: 750px;
+    height: 90px;
+    float: left;
+}
+.invitation_search {
+   width: 650px;
+}
+.sq_content .tag {
+    width: 800px;
+    height: 200px;
+    overflow: hidden;
+}
+.sq_content .tag_right {
+    width:750px;
+    padding-top: 16px;
+}
+.sq_content .button {
+   top:37px;
+}
+.invitation_search {
+   right:149px;
+}
+.invitation_bar{
+   margin: 25px 113px;
+}
+}
+.like-button {
+  cursor: pointer;
+  display: inline-block;
+}
+.heart {
+  width: 34px;
+  height: 30px;
+  background-image: url(/static/image/heart-icon.webp);
+  background-size: contain;
+  transition: background-image 0.5s;
+  vertical-align: middle;
+  outline: none;
+
+}
+
+.heart.active {
+  background-image: url(/static/image/red-heart-icon.webp);
+  outline: none;
+  border:none;
+}
+
+.like-count {
+  margin-left: 5px;
+}
+
+   </style>
+</head>
+<body>
+
+
+<div class="preloader__matias">
+   <div class="box text-center">
+      <div class="matias mb-10">
+         <img src="static/picture/Preloader.png" alt="img">
+      </div>
+      <span class="fz-30 mati fw-600 text-uppercase">
+         寻香悦己
+      </span>
+   </div>
+</div>
+
+<section class="breadcrumnd__section">
+   <!--<< Header v-1 >>-->
+   <header class="header-section">
+      <div class="container">
+         <div class="header-wrapper">
+            <div class="main__logo">
+               <a href="index.html" class="logo">
+                  <img src="static/picture/logo.png" alt="logo">
+               </a>
+            </div>
+                        <ul class="main-menu">
+               <li>
+                  <a href="index.html">
+                     首页
+                  </a>
+               </li>
+               <li>
+                  <a href="/brand">
+                     品牌
+                  </a>
+               </li>
+               <li class="sub-menu">
+                     <a href="service.html">
+                     香调
+                     </a>
+               </li>
+               <div class="sub-menu" style="width: 96px;height: 100px;text-align: center;line-height: 100px;background:url(./static/image/21.png) center no-repeat;">
+                <a href="service-details.html" style="font-size: 20px;font-family: SimHei;color: #f1aeb5;margin-bottom: 20px;">
+                     寻香
+                   </a>
+
+             </div>
+               <li>
+                  <a href="/tiaoxiangshi">
+                     调香师
+                  </a>
+               </li>
+               <li class="subtwohober" class="sub-menu">
+                     <a href="blog.html">排行榜</a>
+               </li>
+               <li><a href="/community">社区</a></li>
+               </li>
+            </ul>
+            <div class="menu__components d-flex align-items-center">
+                <div class="a">
+                   <a href="/sousuo" class="c" id="searchButton">
+                      <img src="static/image/999.webp" style="width:30px">
+                   </a>
+               </div>
+                <div id="joinUsButton"> 
+               <a href="contact.html" class="d-flex fw-500 cmn--btn align-items-center gap-2">
+                  <span class="get__text">
+                     Join Us
+                  </span>
+                  <span>
+                     <i class="bi bi-arrow-right fz-20"></i>                       
+                  </span>
+               </a>
+               </div>
+               <div id="userAvatar" style="display: none;"class="remove__click">
+                <img src="/static/image/头像.png"  >
+            
+            </div>
+                <div id="userName"></div>
+               <div class="header-bar d-lg-none">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+               </div>
+            
+            </div>
+         </div>
+      </div>
+   </header>
+   <!--<< Header v-1 >>-->
+   <div class="container pt-120 pb-120">
+      <div class="row g-4 justify-content-center">
+         <div class="col-lg-8">
+            <div class="breadcrumnd__wrap text-center">
+               <h1>
+                  小社区，大家可以分享一下自己的爱宝！
+               </h1>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+
+<div class="content topicpage" ng-click="g_set_topic()">
+<div class="sq_content ng-scope" ng-controller="NtTopicListCtrl">
+   <a ng-click="go_init(0)" class="type active" ng-class="{'active':fid==0}">香水闲谈</a>
+   <div ng-click="go_search_topic()" class="invitation_bar"></div>
+   <input type="text" class="invitation_search ng-pristine ng-untouched ng-valid">
+   <div class="tag">
+      <img src="https://img.xssdcdn.com/static/topic/chat_a.jpg">
+      <div class="tag_right _new" ng-class="{'_new':fid==0,'_chat':fid==1,'_help':fid==2,'_smell':fid==3,'_niche':fid==4}">
+        <a id="speakButton" class="button">发言</a>
+
+         <div ng-if="fid==0" class="ng-scope">香水闲谈</div>
+         <p ng-if="fid==0" class="showmenu ng-scope">今天你穿了什么香？在这里畅所欲言吧，与香友们一起分享香水的快乐</p>
+       
+      </div>
+   </div>
+   <ul class="dlglist" ng-style="{'margin-top':show_sear_tit==true?'40px':'0px'}" style="margin-top: 0px;">
+    <% posts.forEach(function(community) { %>
+        <li ng-repeat="x in items" class="ng-scope" style>
+            <div class="pjnr"></div>
+            <div class="left">
+                <a target="_blank" class="imgborder" href="">
+                    <img src="https://avatar.xssdcdn.com/avatar/23226943.jpg!x?1708786500" class="mr ng-scope">
+                </a>
+                <div class="c1" style="padding-bottom: 10px;"> <!-- 增加底部内边距 -->
+                    <a target="_blank" class="ng-binding" href=""><%= community.name %>
+                    <br>
+                    <%= community.content %></a>
+                </div>
+            </div>
+           
+            <div class="c3 ng-binding">
+                <div class="like-button" data-like-count="0">
+                  <img class="heart" src="/static/image/heart-icon.webp"></img>
+                  <span class="like-count">0</span>
+                </div>
+             </div>
+        </li>
+    <% }); %>
+    
+    
+      
+     
+       
+   </ul>
+  
+</div>
+</div>
+<div class="subside__barmenu sub__contact">
+    <div class="remove__click d-flex justify-content-center align-items-center">
+       <i class="bi bi-x-lg"></i>
+    </div>
+    <div>
+       <img src="static/picture/logo.png" alt="img" style="height: 50px;width: 100px;">
+    </div>
+    <div class="sub__contact__wrapper d-grid">
+   
+       <a href="index.html" class="side-logo">
+          <img src="/static/picture/头像.webp" alt="img" class="side-logo1">
+       </a>
+       <ul>
+          <li>
+             昵称：<input type="text" class="passwordInput" readonly>
+          </li>
+       </ul>
+    </div>
+    <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2 logout-button">
+          <span>
+             <i class="bi bi-chevron-right"></i>             
+          </span>
+          <span class="get__text">
+             退出登录
+          </span>
+       </a>
+       <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
+          <span>
+             <i class="bi bi-chevron-right"></i>             
+          </span>
+          <span class="get__text">
+             进入首页
+          </span>
+       </a>
+ </div>  
+<!--<<  sub side bar custom >>-->
+<div class="containerr pt-120 pb-120">
+   <div class="row g-4 justify-content-center">
+      <div class="col-lg-8">
+         <div class="breadcrumnd__wrap text-center">
+            <h1>
+               人生海海，有幸相遇！
+            </h1>
+            <ul class="breakcrumnd__cont justify-content-center">
+               <li>
+                  <a href="/index.html">
+                     Home 
+                  </a>
+               </li>
+               <li class="white">
+                  /  
+               </li>
+               <li class="base">
+                  <a href="/contact.html">
+                  Join Us
+                  </a>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+
+
+
+
+   <div class="progress-wrap">
+      <svg class="progress-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
+         <path fill="#c9f31d" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+      </svg>
+      <i class="bi bi-arrow-90deg-up title topping"></i>
+   </div>
+   <!--<< Scroll To Top >>-->
+
+   <!--<< Jquery Latest >>-->
+   <script data-cfasync="false" src="static/js/email-decode.min.js"></script><script src="static/js/jquery-3.7.0.min.js"></script>
+   <!--<< Viewport Js >>-->
+   <script src="static/js/viewport.jquery.js"></script>
+   <!--<< Bootstrap Js >>-->
+   <script src="static/js/bootstrap.min.js"></script>
+   <!--<< Aos animation Js >>-->
+   <script src="static/js/aos.js"></script>
+   <!--<< Nice Select Js >>-->
+   <script src="static/js/jquery.nice-select.min.js"></script>
+   <!--<< Swiper Slide Js >>-->
+   <script src="static/js/swiper-bundle.min.js"></script>
+   <!--<< Swiper Bundle Js >>-->
+   <script src="static/js/jquery.magnific-popup.min.js"></script>
+   <!--<< magnific popup Js >>-->
+   <script src="static/js/odometer.min.js"></script>
+   <!--<< Odometer js Js >>-->
+   <script src="static/js/wow.min.js"></script>
+   <!--<< Wow Animation js >>-->
+   <script src="static/js/main.js"></script>
+   <!--<< Main.js >>-->
+   <script>   
+    $(document).ready(function() {
+  $.get('/get-user-info', function(data) {
+      if (data.isLoggedIn) {
+          $('.subside__barmenu').find('.passwordInput').val(data.user.name); // 显示用户名
+      }
+  });
+});
+
+    $('.subside__barmenu').find('.cmn--btn').last().on('click', function(event) {
+        event.preventDefault(); // 防止链接跳转
+        $.get('/logout', function() {
+            window.location.href = '/contact.html'; // 重定向到首页或登录页面
+        });
+    });
+    
+    </script>
+    <script>
+    $(document).ready(function() {
+        $('#speakButton').on('click', function(event) {
+            event.preventDefault(); // 阻止链接默认行为
+    
+            // 检查用户是否已经登录
+            $.get('/get-user-info', function(data) {
+                if (data.isLoggedIn) {
+                    // 如果用户已登录，允许他们发言
+                    window.location.href = 'shequ.html'; // 重定向到发言页面
+                } else {
+                    // 如果用户未登录，重定向到登录页面或显示提示
+                    alert('请先登录！');
+                    window.location.href = 'contact.html'; 
+                }
+            });
+        });
+    });
+    </script>    
+<script>
+    const likeButtons = document.querySelectorAll('.like-button');
+    
+    likeButtons.forEach(likeButton => {
+      const heartIcon = likeButton.querySelector('.heart');
+      const likeCount = likeButton.querySelector('.like-count');
+      let isLiked = false;
+      let count = parseInt(likeButton.dataset.likeCount);
+    
+      likeButton.addEventListener('click', function() {
+        if (!isLiked) {
+          heartIcon.classList.add('active');
+          isLiked = true;
+          count++;
+        } else {
+          heartIcon.classList.remove('active');
+          isLiked = false;
+          count--;
+        }
+        likeCount.textContent = count;
+        likeButton.dataset.likeCount = count;
+      });
+    });
+    </script>
+     <script>   
+        $(document).ready(function() {
+            $.get('/get-user-info', function(data) {
+                if (data.isLoggedIn) {
+                    // Display the user's name
+                    $('.subside__barmenu').find('.passwordInput').val(data.user.name);
+                    // Set the logout button text and functionality
+                    $('.subside__barmenu').find('.logout-button .get__text').text('退出登录');
+                    $('.subside__barmenu').find('.logout-button').on('click', function(event) {
+                        event.preventDefault(); // Prevent link navigation
+                        $.get('/logout', function() {
+                            window.location.href = '/contact.html'; // Redirect after logout
+                        });
+                    });
+                } else {
+                    // Hide the user's name field
+                    $('.subside__barmenu').find('.passwordInput').parent().hide();
+                    // Set the login button text and functionality
+                    $('.subside__barmenu').find('.logout-button .get__text').text('登录');
+                    $('.subside__barmenu').find('.logout-button').on('click', function(event) {
+                        event.preventDefault(); // Prevent link navigation
+                        window.location.href = '/contact.html'; // Redirect to login page
+                    });
+                }
+            });
+        });
+    </script>
+
+
+
+</body>
+</html>

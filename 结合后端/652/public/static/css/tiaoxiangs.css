@@ -1,0 +1,316 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.contents {
+    width: 1200px;
+    min-height: 560px;
+    margin: 0 100px;
+    overflow: hidden;
+}
+@media screen and (min-width:768px) and (max-width: 1000px){
+    .contents {
+        width: 850px;
+        min-height: 560px;
+        margin: 0 120px;
+        overflow: hidden;
+    }
+}
+@media screen and (min-width:768px) and (max-width: 1000px){
+    .contents .txsl_left {
+        width: 90%;
+        float: left;
+        padding-top: 10px;
+        font-size: 8px;
+        margin-left: 25px;
+    }
+}
+@media screen and (min-width:768px) and (max-width: 1000px){
+    .contents .txsl_left dl dd {
+        float: left;
+        display: block;
+        width: 186px;
+        line-height: 30px;
+    }
+}
+@media screen and (min-width:415px) and (max-width: 767px){
+    .contents {
+        width: 700px;
+        min-height: 560px;
+        margin: 0 28px;
+        overflow: hidden;
+    }
+}
+@media screen and (min-width:415px) and (max-width: 767px){
+    .contents .txsl_left {
+        width: 77%;
+        float: left;
+        padding-top: 10px;
+        font-size: 8px;
+        margin-left: 82px;
+    }
+}
+@media screen and (min-width:415px) and (max-width: 767px){
+    .contents .txsl_left dl dd {
+        float: left;
+        display: block;
+        width: 170px;
+        line-height: -10px;
+    }
+}
+@media (max-width: 414px){
+    .contents {
+        width: 413px;
+        min-height: 300px;
+        margin: 0 28px;
+        overflow: hidden;
+    }
+}
+@media (max-width: 414px){
+    .contents .txsl_left {
+        width: 77%;
+        float: left;
+        padding-top: 0px;
+        font-size: 8px;
+        margin-left: 63px;
+    }
+}
+@media (max-width: 414px){
+    .contents .txsl_left dl dd {
+        float: left;
+        display: block;
+        width: 148px;
+        line-height: 18px;
+    }
+}
+@media screen and (min-width:768px) and (max-width: 1199px){
+    .contents .txsl_left {
+        width: 800px;
+        float: left;
+        padding-top: 0px;
+        font-size: 8px;
+        margin-left: 0px;
+    }
+    .contents .txsl img {
+        position: absolute;
+        top: 96px;
+        right: 303px;
+        z-index: -1;
+        height:240px;
+        width: 250px;
+    }
+    .contents .txsl .descs {
+        color: #4a4a4a;
+        display: block;
+        line-height: 25px;
+        margin: 10px -39px 20px;
+        width: 719px;
+    }
+    .contents .txsl .desc{
+        font-size: 13px;
+        width: 450px;
+        margin: 0px -39px;
+        position: relative;
+    }
+    .contents .txsl h1 {
+        width: 568px;
+        text-align: center;
+        display: block;
+        margin-block-start: 0.67em;
+        margin-block-end: 0.67em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+}
+@media screen and (min-width:415px) and (max-width: 767px){
+    .contents .txsl img {
+        position: absolute;
+        top: 96px;
+        right: 326px;
+        z-index: -1;
+        height:240px;
+        width: 220px;
+    }
+    .contents .txsl .descs {
+        color: #4a4a4a;
+        display: block;
+        line-height: 25px;
+        margin: 10px 27px 20px;
+        width: 588px;
+    }
+    .contents .txsl .desc{
+        font-size: 13px;
+        width: 400px;
+        margin: 0px 27px;
+        position: relative;
+    }
+    .contents .txsl h1 {
+        width: 725px;
+        text-align: center;
+        display: block;
+        margin-block-start: 0.67em;
+        margin-block-end: 0.67em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+}
+@media (max-width: 414px){
+    .contents .txsl .descs {
+        color: #4a4a4a;
+        display: block;
+        line-height: 25px;
+        margin: 10px 27px 20px;
+        width: 300px;
+    }
+    .contents .txsl .desc{
+        font-size: 13px;
+        width: 300px;
+        margin: 0px 27px;
+        position: relative;
+    }
+    .contents .txsl h1 {
+        width: 359px;
+        text-align: center;
+        display: block;
+        margin-block-start: 0.67em;
+        margin-block-end: 0.67em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+}
+div {
+    display: block;
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    margin-bottom: -24px;
+}
+a {
+    text-decoration: none;
+    color: #6c6c6c;
+    font-size: 19px;
+}
+dl {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+img {
+    border: 0;
+    border-style: none;
+    border-width: 0;
+}
+.txsl {
+    font-size: 13px;
+    width: 980px;
+    margin: 10px 50px;
+    position: relative;
+}
+.contentss h1 {
+    font-size: 22px;
+    color: #6e7099;
+    padding: 30px 0 8px;
+    list-style: none;
+    font-weight: normal;
+}
+.txsl h1 {
+    width: 1000px;
+    text-align: center;
+    display: block;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.txsl .desc {
+    width: 530px;
+    color: #4a4a4a;
+    display: block;
+    line-height: 25px;
+    margin: 10px 10px 20px;
+}
+.txsl .desc p {
+    text-indent: 2em;
+}
+.txsl img {
+    position: absolute;
+    top: 90px;
+    right: 20px;
+    z-index: -1;
+    height:240px;
+    width: 400px;
+}
+.txsl .descs {
+    color: #4a4a4a;
+    display: block;
+    line-height: 25px;
+    margin: 10px 10px 20px;
+}
+.txsl .descs p {
+    text-indent: 2em;
+}
+.txsl_left {
+    width: 1136px;
+    float: left;
+    padding-top: 10px;
+    font-size: 13px;
+    margin-left: 75px;
+}
+.txsl_left h2 {
+    line-height: 30px;
+    font-size: 16px;
+    color: #6e7099;
+    margin: 20px 0 -5px 10px;
+    font-weight: normal;
+}
+.txsl_left h2 a {
+    color: #6e7099;
+    padding: 0 8px;
+}
+a:-webkit-any-link {
+    color: #000;
+    cursor: pointer;
+}
+.txsl_left dl {
+    clear: both;
+    margin: 5px 10px;
+}
+.txsl_left dl dt {
+    display: block;
+    line-height: 50px;
+    font-size: 16px;
+    color: #e7557c;
+    clear: both;
+    margin-top: 10px;
+}
+dl,dt{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+} 
+dd {
+    margin-inline-start: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.txsl_left dl dd {
+    float: left;
+    display: block;
+    width: 235px;
+    line-height: 20px;
+}
+.xian{
+height: 100%;
+margin: 0;
+position: relative;
+clear: both;
+border-bottom: 1px solid #000;
+}

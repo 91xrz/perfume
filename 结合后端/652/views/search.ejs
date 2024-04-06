@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <!--<< Required meta tags >>-->
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>寻香悦己-品牌</title>
+ <!--<< Bootstrap min.css >>-->
+ <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+ <!--<< Aos animation css >>-->
+ <link rel="stylesheet" href="/static/css/aos.css">
+ <!--<< Main.css >>-->
+ <link rel="stylesheet" href="/static/css/main.css">
+ <link rel="stylesheet" href="/static/css/tiaoxiangs.css">
+ <link rel="stylesheet" href="/static/css/xiangdiao.css">
+ <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+ <style>.shell{
+   position: relative;
+   width: 800px;
+   padding: 13px;
+   background-color: #ec939778;
+   border-radius: 25px;
+   box-shadow: 0 10px 50px #ec939778,0 0 0 20px #fff;
+   height:50px;
+ }
+ .shell input{
+   width:80%;
+   height:26px;
+   color: #000000;
+   font: 300 18px '优设标题黑';
+   border:0;
+   background-color: transparent;
+ }
+ .shell input::placeholder{
+   color: #00000074;
+ }
+ .shell a{
+   display: flex;
+   font-size: 30px;
+   position: absolute;
+   right: 17px;
+   top:0px;
+   color: #fff;
+   width: 100px;
+   height: 26px;
+ }
+ .shell a .fa{
+   margin: 6px 15px;
+   transition: .3s;
+ }
+ .shell a .fa-search{
+   transform: translate(-80%);
+   opacity: 1;
+ }
+ .shell a .fa-hand-o-right{
+   transform: translate(-100%);
+   opacity: 0;
+ }
+ .shell a:hover .fa-search{
+   transform: translate(0);
+   opacity: 0;
+ }
+ .shell a:hover .fa-hand-o-right{
+   transform: translate(60px);
+   opacity: 1;
+ }
+ .shell a::before{
+   content:'GO!';
+   position:absolute;
+   display: block;
+   font-size: 25px;
+   background-color: #ec939778;
+   padding: 3px 11px;
+   top:-47px;
+   right:-25px;
+   border-radius: 8px;
+   transition: .3s;
+   opacity: 0;
+   animation: box 1s infinite ease;
+ }
+ .shell a:hover::before{
+   top:-65px;
+   opacity: 1;
+ }
+ @keyframes box{
+ 0%{
+   transform: rotate(0deg);
+ }
+ 33%{
+   transform: rotate(8deg);
+ }
+ 66%{
+   transform: rotate(-8deg);
+ }
+ 100%{
+   transform: rotate(0deg);
+ }
+ }
+ .searchRes { 
+ width: 800px;
+ }
+ .searchRes li{
+ margin-top: 3px;
+ position: relative;
+ }
+ @media screen and (min-width:415px) and (max-width: 767px){
+ .content .searchRes .ng-scopes{
+   margin: 22px 304px 0px 0px;
+ }
+ }</style>
+</head>
+<body>
+
+<!--<< Preloader >>-->
+<div class="preloader__matias">
+   <div class="box text-center">
+      <div class="matias mb-10">
+
+         <img src="/static/picture/Preloader.png" alt="img">
+      </div>
+      <span class="fz-30 mati fw-600 text-uppercase">
+         寻香悦己
+      </span>
+   </div>
+</div>
+<!--<< Preloader >>--> 
+
+
+
+
+
+<!--<< banner >>-->
+<section class="breadcrumnd__section">
+   <!--<< Header v-1 >>-->
+   <header class="header-section" style="position: relative;">
+      <div class="container">
+         <div class="header-wrapper">
+            <div class="main__logo">
+               <a href="index.html" class="logo">
+                  <img src="/static/picture/logo.png" alt="logo">
+               </a>
+            </div>
+                        <ul class="main-menu">
+               <li>
+                  <a href="index.html">
+                     首页
+                  </a>
+               </li>
+               <li>
+                  <a href="/brand">
+                     品牌
+                  </a>
+               </li>
+               <li class="sub-menu">
+                  <a href="service.html">
+                     香调
+                  </a>
+               </li>
+               <div class="sub-menu" style="width: 96px;height: 100px;text-align: center;line-height: 100px;background:url(./static/image/21.png) center no-repeat;">
+                  <a href="service-details.html" style="font-size: 20px;font-family: SimHei;color: #f1aeb5;margin-bottom: 20px;">
+                       寻香
+                     </a>
+
+               </div>
+               <li>
+                  <a href="/tiaoxiangshi">
+                     调香师
+                  </a>
+               </li>
+               <li class="sub-menu" class="subtwohober">
+                  <a href="blog.html">排行榜</a>
+               </li>
+               <li class="sub-menu" class="subtwohober">
+                  <a href="/community">社区</a>
+               </li>
+            </ul>
+            <div class="menu__components d-flex align-items-center">
+               <div class="a">
+                  <a href="/sousuo" class="c">
+                     <img src="static/image/999.webp" style="width:30px">
+                  </a>
+               </div>
+               <div id="joinUsButton"> 
+               <a href="contact.html" class="d-flex fw-500 cmn--btn align-items-center gap-2">
+                  <span class="get__text">
+                     Join us
+                  </span>
+                  <span>
+                     <i class="bi bi-arrow-right fz-20"></i>                       
+                  </span>
+               </a>
+               </div>
+               <div id="userAvatar" style="display: none;" class="remove__click">
+                  <img src="/static/image/头像.png"  >
+              
+              </div>
+                  <div id="userName"></div>
+               <div class="header-bar d-lg-none">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+               </div>
+            </div>
+         </div>
+      </div>
+   </header>
+   <div class="container pt-120 pb-120">
+      <div class="row g-4 justify-content-center">
+            <div class="shell">
+               <input type="text" id="searchInput" placeholder="Search">
+               <a href="" id="searchLink">
+                  <i class="fa fa-hand-o-right"></i>
+                  <i class="fa fa-search"></i>
+               </a>
+            </div>
+      </div>
+  </div>
+  
+</section>
+<!--<< banner >>-->
+<div class="content">
+   <% if (query && query.trim() !== "") { %>
+      <h1 class="ng-scope">
+         "<strong><%= query %></strong>"的搜索结果:
+      </h1>
+   <% } %>
+   
+   <div class="searchRes">
+      <!-- 香水搜索结果 -->
+      <% if (perfumes.length > 0) { %>
+      <h1 class="ng-scope" style="font-weight: bold; font-size: 40px; color: #ec9397; text-align: center;">
+         香水
+      </h1>
+   
+         <div class="items" id="items" compile="items">
+            <% perfumes.slice(0, 5).forEach(function(perfume) { %>
+            <div class="item ng-scope">
+                <a href="" target="_blank" class="imgborder">
+                  <img src="/static/picture/perfume/<%= perfume.id %>.png" class="noxx" onerror="this.onerror=null;this.src='/static/picture/image/六神花露水.webp';">
+                </a>
+                
+                <div class="detail">
+                  <a href="/perfumeDetail/<%= perfume.id %>" target="_blank">
+                     <h2><%= perfume.perfumeName %></h2>
+                 </a>
+                  </a>
+                  <div class="score-and-stars">
+                     <div class="score">
+                         <%= perfume.score ? perfume.score + '分' : '暂无' %>
+                     </div>
+                     <div class="stars">
+                        <% 
+                          var fullStars = Math.floor(perfume.score / 2); 
+                          var halfStar = perfume.score % 2 >= 1.5; 
+                          var partialStar = perfume.score % 2 >= 1 && perfume.score % 2 < 1.5; 
+                          var starSlots = 5; 
+                        %>
+                        <% for(var i = 0; i < fullStars; i++) { %>
+                           <img src="/static/image/4.png" alt="Star" class="star"> <!-- 满星 -->
+                         <% } %>
+                         <% if(partialStar) { %>
+                           <img src="/static/image/3.png" alt="Star" class="star"> <!-- 1到1.5分的星星 -->
+                         <% } %>
+                         <% if(halfStar) { %>
+                           <img src="/static/image/2.png" alt="Star" class="star"> <!-- 0到1分的星星 -->
+                         <% } %>
+                         <% for(var i = fullStars + (partialStar ? 1 : 0) + (halfStar ? 1 : 0); i < starSlots; i++) { %>
+                           <img src="/static/image/1.png" alt="Star" class="star"> <!-- 空星填充 -->
+                         <% } %>
+                      </div>
+                     </div>
+                 
+                  <div class="info">
+                      <!-- 动态插入前调、中调、后调 -->
+                      前调：<%= perfume.qiandiao %>
+                      <br>
+                      中调：<%= perfume.zhongdiao %>
+                      <br>
+                      后调：<%= perfume.houdiao %>
+                  </div>
+              </div>
+              <div class="shouchang-button">
+               <img class="heart" src="/static/image/start.webp" style="width: 30px;"></img>
+             </div>
+            </div>
+            <% }); %>
+         </div>
+        
+         <% if (perfumes.length > 5) { %>
+            <div id="loadMoreContainer" style="text-align: center; margin-top: 20px;">
+                <button id="loadMoreButton" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">
+                    查看更多
+                </button>
+            </div>
+        <% } %>
+         <% } %>
+      <!-- 品牌搜索结果 -->
+      <% if (brands.length > 0) { %>
+      <h1 class="ng-scopes" style="font-weight: bold; font-size: 40px; color: #ec9397; text-align: center;">
+         品牌
+      </h1>
+      <% brands.forEach(function(brand) { %>
+      <div class="items" style="width: 600px;">
+         <div class="item">
+            <a href="/brand/brandDetail?name=<%= encodeURIComponent(brand.EnglishName) %>" target="_blank" class="imgborder">
+               <img src="/static/image/brand_placeholder.png" class="noxx">
+            </a>
+            <div class="detail" style="padding-top: 14px;">
+               <a href="/brand/brandDetail?name=<%= encodeURIComponent(brand.EnglishName) %>" target="_blank">
+                  <h2><%= brand.BrandName %></h2>
+               </a>
+               <div class="info">
+                  <%= brand.jianjie.length > 100 ? brand.jianjie.substring(0, 100) + '...' : brand.jianjie %>
+              </div>
+            </div>
+         </div>
+      </div>
+      <% }); %>
+      <% } %>
+      <!-- 调香师搜索结果 -->
+      <% if (perfumers.length > 0) { %>
+      <h1 class="ng-scopes" style="font-weight: bold; font-size: 40px; color: #ec9397; text-align: center;">
+         调香师
+      </h1>
+      <% perfumers.forEach(function(perfumer) { %>
+      <div class="items" style="width: 600px;">
+         <div class="item">
+            <a href="tiaoxiangshi.html" target="_blank" class="imgborder">
+               <img src="/static/image/perfumer_placeholder.png" class="noxx">
+            </a>
+            <div class="detail" style="padding-top: 14px;">
+               <a href="tiaoxiangshi.html" target="_blank">
+                  <h2><%= perfumer.perfumer1 %></h2>
+               </a>
+               <div class="info">
+                  <%= perfumer.jianjie %> <!-- 假设调香师模型中有生平简介字段 -->
+               </div>
+            </div>
+         </div>
+      </div>
+      <% }); %>
+      <% } %>
+   </div>
+</div>
+
+
+<!--<<  sub side bar custom >>-->
+<div class="containerr pt-120 pb-120">
+   <div class="row g-4 justify-content-center">
+      <div class="col-lg-8">
+         <div class="breadcrumnd__wrap text-center">
+            <h1>
+               人生海海，有幸相遇！
+            </h1>
+            <ul class="breakcrumnd__cont justify-content-center">
+               <li>
+                  <a href="index.html">
+                     Home 
+                  </a>
+               </li>
+               <li class="white">
+                  /  
+               </li>
+               <li class="base">
+                  <a href="contact.html">
+                  Join Us
+                  </a>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="subside__barmenu sub__contact">
+   <div class="remove__click d-flex justify-content-center align-items-center">
+      <i class="bi bi-x-lg"></i>
+   </div>
+   <div>
+      <img src="static/picture/logo.png" alt="img" style="height: 50px;width: 100px;">
+   </div>
+   <div class="sub__contact__wrapper d-grid">
+  
+      <a href="index.html" class="side-logo">
+         <img src="/static/picture/头像.webp" alt="img" class="side-logo1">
+      </a>
+      <ul>
+         <li>
+            昵称：<input type="text" class="passwordInput" readonly>
+         </li>
+      </ul>
+   </div>
+   <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2 logout-button">
+         <span>
+            <i class="bi bi-chevron-right"></i>             
+         </span>
+         <span class="get__text">
+            退出登录
+         </span>
+      </a>
+      <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
+         <span>
+            <i class="bi bi-chevron-right"></i>             
+         </span>
+         <span class="get__text">
+            进入首页
+         </span>
+      </a>
+</div>  
+
+   <!--<< Scroll To Top >>-->
+   <div class="progress-wrap">
+      <svg class="progress-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
+         <path fill="#c9f31d" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+      </svg>
+      <i class="bi bi-arrow-90deg-up title topping"></i>
+   </div>
+   <!--<< Scroll To Top >>-->
+
+
+   <!--<< Jquery Latest >>-->
+   <script data-cfasync="false" src="/static/js/email-decode.min.js"></script><script src="/static/js/jquery-3.7.0.min.js"></script>
+   <!--<< Viewport Js >>-->
+   <script src="/static/js/viewport.jquery.js"></script>
+   <!--<< Bootstrap Js >>-->
+   <script src="/static/js/bootstrap.min.js"></script>
+   <!--<< Aos animation Js >>-->
+   <script src="/static/js/aos.js"></script>
+   <!--<< Nice Select Js >>-->
+   <script src="/static/js/jquery.nice-select.min.js"></script>
+   <!--<< Swiper Slide Js >>-->
+   <script src="/static/js/swiper-bundle.min.js"></script>
+   <!--<< Swiper Bundle Js >>-->
+   <script src="/static/js/jquery.magnific-popup.min.js"></script>
+   <!--<< magnific popup Js >>-->
+   <script src="/static/js/odometer.min.js"></script>
+   <!--<< Odometer js Js >>-->
+   <script src="/static/js/wow.min.js"></script>
+   <!--<< Wow Animation js >>-->
+   <script src="/static/js/main.js"></script>
+   <!--<< Main.js >>-->
+  
+   <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          var searchInput = document.getElementById('searchInput');
+          var searchLink = document.getElementById('searchLink');
+      
+          // 更新链接的函数
+          function updateLink() {
+              var query = searchInput.value; // 获取输入框的值
+              searchLink.href = '/sousuo?query=' + encodeURIComponent(query); // 更新链接的href属性
+          }
+      
+          // 执行搜索的函数
+          function performSearch() {
+              updateLink(); // 更新链接
+              window.location.href = searchLink.href; // 跳转到更新后的链接
+          }
+      
+          // 监听输入框的输入事件（可选，如果你想实时更新链接）
+          searchInput.addEventListener('input', function() {
+              updateLink();
+          });
+      
+          // 监听输入框的keydown事件，检测Enter键
+          searchInput.addEventListener('keydown', function(event) {
+              if(event.keyCode === 13) { // 13是Enter键的键码
+                  event.preventDefault(); // 阻止默认行为
+                  performSearch(); // 执行搜索
+              }
+          });
+      
+          // 监听链接的点击事件
+          searchLink.addEventListener('click', function(event) {
+              event.preventDefault(); // 阻止链接的默认行为
+              performSearch(); // 执行搜索
+          });
+      });
+      </script>
+      <script>
+         // 将EJS变量`query`的值赋给JavaScript变量
+         var searchQuery = "<%= query %>";
+       </script>
+       
+   <script>
+      document.getElementById('loadMoreButton').addEventListener('click', function() {
+        const currentCount = document.querySelectorAll('.item.ng-scope').length;
+        fetch(`/sousuo/loadMorePerfumes?offset=${currentCount}&limit=5&searchQuery=${encodeURIComponent(searchQuery)}`)
+        .then(response => {
+    if (!response.ok) {
+      throw new Error(`服务器错误: ${response.statusText}`);
+    }
+    return response.json();
+  })
+          .then(data => {
+            const itemsContainer = document.getElementById('items');
+            data.forEach(perfume => {
+              // 评分和星级逻辑
+              const scoreText = perfume.score ? perfume.score + '分' : '暂无';
+              let starsHtml = '';
+              const fullStars = Math.floor(perfume.score / 2);
+              const halfStar = perfume.score % 2 >= 1.5;
+              const partialStar = perfume.score % 2 >= 1 && perfume.score % 2 < 1.5;
+              const emptyStars = 5 - fullStars - (partialStar ? 1 : 0) - (halfStar ? 1 : 0);
+      
+              for(let i = 0; i < fullStars; i++) {
+                starsHtml += '<img src="/static/image/4.png" alt="Star" class="star">';
+              }
+              if(partialStar) {
+                starsHtml += '<img src="/static/image/3.png" alt="Star" class="star">';
+              }
+              if(halfStar) {
+                starsHtml += '<img src="/static/image/2.png" alt="Star" class="star">';
+              }
+              for(let i = 0; i < emptyStars; i++) {
+                starsHtml += '<img src="/static/image/1.png" alt="Star" class="star">';
+              }
+      
+              // 构建每个香水的HTML结构
+              const itemHtml = `
+                <div class="item ng-scope">
+                    <a href="" target="_blank" class="imgborder">
+                      <img src="/static/picture/perfume/${perfume.id}.png" class="noxx" onerror="this.onerror=null;this.src='/static/picture/image/六神花露水.webp';">
+                    </a>
+                    
+                    <div class="detail">
+                      <a href="/perfumeDetail/${perfume.id}" target="_blank">
+                         <h2>${perfume.perfumeName}</h2>
+                     </a>
+                      <div class="score-and-stars">
+                         <div class="score">
+                             ${scoreText}
+                         </div>
+                         <div class="stars">
+                            ${starsHtml}
+                         </div>
+                      </div>
+                     
+                      <div class="info">
+                          前调：${perfume.qiandiao}<br>
+                          中调：${perfume.zhongdiao}<br>
+                          后调：${perfume.houdiao}
+                      </div>
+                  </div>
+                </div>`;
+              itemsContainer.innerHTML += itemHtml;
+             // console.log('加载的数据:', data);
+            });
+          })
+          .catch(error => console.error('Error loading more perfumes:', error));
+      });
+      </script>
+       
+ <script>   
+   $(document).ready(function() {
+       $.get('/get-user-info', function(data) {
+           if (data.isLoggedIn) {
+               // Display the user's name
+               $('.subside__barmenu').find('.passwordInput').val(data.user.name);
+               // Set the logout button text and functionality
+               $('.subside__barmenu').find('.logout-button .get__text').text('退出登录');
+               $('.subside__barmenu').find('.logout-button').on('click', function(event) {
+                   event.preventDefault(); // Prevent link navigation
+                   $.get('/logout', function() {
+                       window.location.href = '/contact.html'; // Redirect after logout
+                   });
+               });
+           } else {
+               // Hide the user's name field
+               $('.subside__barmenu').find('.passwordInput').parent().hide();
+               // Set the login button text and functionality
+               $('.subside__barmenu').find('.logout-button .get__text').text('登录');
+               $('.subside__barmenu').find('.logout-button').on('click', function(event) {
+                   event.preventDefault(); // Prevent link navigation
+                   window.location.href = '/contact.html'; // Redirect to login page
+               });
+           }
+       });
+   });
+</script>
+       
+</body>
+</html>

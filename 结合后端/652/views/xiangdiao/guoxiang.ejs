@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <%- include('../partials/cs') %>
+    <!--<< css内容 >>-->
+</head>
+<body>
+   <%- include('../partials/header') %>
+   <div class="container pt-120 pb-120">
+      <div class="row g-4 justify-content-center">
+         <div class="col-lg-8">
+            <div class="breadcrumnd__wrap text-center">
+               <h1 style="font-weight: 600">
+                  香调
+               </h1>
+               <ul class="breakcrumnd__cont justify-content-center">
+                  <li>
+                     <a href="/index.html">
+                        Home 
+                     </a>
+                  </li>
+                  <li class="white">
+                     /  
+                  </li>
+                  <li class="base">
+                     flavoring
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+  <!--<< 导航栏内容 >>-->
+   <div class="content ng-scop" ng-controller="NtLiKeCtrl">
+      <div class="odormenu">
+         <ul>
+            <li>
+               <a class="all" href="/service.html">香调分类</a>
+            </li>
+            <li>
+              
+               <a href="/xiangdiao/guoxiang/" class="<%= currentOdorType === 'guoxiang' ? 'guoxiangdiao' : '' %>">果香调</a>
+            </li>
+            <li>
+               <a href="/xiangdiao/ganju/" class="<%= currentOdorType === 'ganju' ? 'ganjudiao' : '' %>">柑橘调</a>
+            </li>
+            <li>
+               <a href="/xiangdiao/lvye/" class="<%= currentOdorType === 'lvye' ? 'lvyediao' : '' %>">绿叶调</a>
+            </li>
+            <li>
+               <a href="/xiangdiao/shuisheng/" class="<%= currentOdorType === 'shuisheng' ? 'shuishengdiao' : '' %>">水生调</a>
+            </li>
+            <li>
+               <a href="/xiangdiao/fuqi" class="<%= currentOdorType === 'fuqi' ? 'fuqidiao' : '' %>">馥奇调</a>
+            </li>
+            <li>
+               <a href="/xiangdiao/pige" class="<%= currentOdorType === 'pige' ? 'pige' : '' %>">皮革调</a>
+            </li>
+            <li>
+               <a>甘苔调</a>
+            </li>
+            <li>
+               <a href="/xiangdiao/muzhi" class="<%= currentOdorType === 'muzhi' ? 'muzhidiao' : '' %>">木质调</a>
+            </li>
+            <li>
+               <a href="/xiangdiao/dongfang" class="<%= currentOdorType === 'dongfang' ? 'dongfangdiao' : '' %>">东方调</a>
+            </li>
+            <li>
+               <a href="/xiangdiao/meishi" class="<%= currentOdorType === 'meishi' ? 'meishidiao' : '' %>">美食调</a>
+            </li>
+            <li>
+               <a href="/xiangdiao/huaxiang" class="<%= currentOdorType === 'huaxiang' ? 'huaxiangdiao' : '' %>">花香调</a>
+            </li>
+         </ul>
+      </div >
+         <div>
+            <img src="<%= imageUrl %>"style="width:1200px;height:200px" onerror='imgcdnfallback(this,"<%= imageUrl %>")'>
+            <div class='covertxt'><%= title %></div>
+            <div class='desc'>
+                  <% description.forEach(function(desc) { %>
+                              <p class="x"><%= desc %></p>
+                  <% }); %>
+            </div>
+
+            <div style="font-size:18px;color:rgb(80, 122, 174)"><%= recommendationTitle %>:</div>
+         <div style="height:10px;margin:0;position:relative;clear:both;border-bottom: 3px solid #eee;"></div>
+         <% perfumes.forEach(function(perfume) { %>
+         <div class="items" id="items" compile="items">
+            <div class="item ng-scope">
+                <a href="" target="_blank" class="imgborder">
+                  <img src="/static/picture/perfume/<%= perfume.id %>.png" class="noxx" onerror="this.onerror=null;this.src='/static/picture/image/六神花露水.webp';">
+                </a>
+                
+                <div class="detail">
+                  <a href="/perfumeDetail/<%= perfume.id %>" target="_blank">
+                     <h2><%= perfume.perfumeName %></h2>
+                 </a>
+                  </a>
+                  <div class="score-and-stars">
+                     <div class="score">
+                         <%= perfume.score ? perfume.score + '分' : '暂无' %>
+                     </div>
+                     <div class="stars">
+                        <% 
+                          var fullStars = Math.floor(perfume.score / 2); 
+                          var halfStar = perfume.score % 2 >= 1.5; 
+                          var partialStar = perfume.score % 2 >= 1 && perfume.score % 2 < 1.5; 
+                          var starSlots = 5; 
+                        %>
+                        <% for(var i = 0; i < fullStars; i++) { %>
+                           <img src="/static/image/4.png" alt="Star" class="star"> <!-- 满星 -->
+                         <% } %>
+                         <% if(partialStar) { %>
+                           <img src="/static/image/3.png" alt="Star" class="star"> <!-- 1到1.5分的星星 -->
+                         <% } %>
+                         <% if(halfStar) { %>
+                           <img src="/static/image/2.png" alt="Star" class="star"> <!-- 0到1分的星星 -->
+                         <% } %>
+                         <% for(var i = fullStars + (partialStar ? 1 : 0) + (halfStar ? 1 : 0); i < starSlots; i++) { %>
+                           <img src="/static/image/1.png" alt="Star" class="star"> <!-- 空星填充 -->
+                         <% } %>
+                      </div>
+                     </div>
+                  <div class="info">
+                      <!-- 动态插入前调、中调、后调 -->
+                      前调：<%= perfume.qiandiao %>
+                      <br>
+                      中调：<%= perfume.zhongdiao %>
+                      <br>
+                      后调：<%= perfume.houdiao %>
+                  </div>
+              </div>
+              <br><br>
+              <div class="shouchang-button" data-perfume-id="<%= perfume.id %>">
+               <img class="heart" src="/static/image/start.webp" style="width: 30px;">
+             </div>
+            </div>
+           
+         </div>
+         <% }); %>
+         <div class="subside__barmenu sub__contact">
+            <div class="remove__click d-flex justify-content-center align-items-center">
+               <i class="bi bi-x-lg"></i>
+            </div>
+            <div>
+               <img src="/static/picture/logo.png" alt="img" style="height: 50px;width: 100px;">
+            </div>
+            <div class="sub__contact__wrapper d-grid">
+             
+               <a href="index.html" class="side-logo"> 
+                  <img src="/static/picture/头像.webp" alt="img" class="side-logo1">
+               </a>
+               <ul>
+                  <li>
+                     昵称：<input type="text" class="passwordInput" readonly>
+                  </li>
+               </ul>
+            </div>
+               <a href="/index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
+                  <span>
+                     <i class="bi bi-chevron-right"></i>             
+                  </span>
+                  <span class="get__text">
+                     进入首页
+                  </span>
+               </a>
+               <a href="/index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
+                  <span>
+                     <i class="bi bi-chevron-right"></i>             
+                  </span>
+                  <span class="get__text">
+                     退出登录
+                  </span>
+               </a>
+         </div>
+         </div>
+   <div class="progress-wrap">
+      <svg class="progress-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
+         <path fill="#c9f31d" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+      </svg>
+      <i class="bi bi-arrow-90deg-up title topping"></i>
+   </div>
+   
+   <!--<< Scroll To Top >>-->
+   <%- include('../partials/jss') %>
+
+
+   <!-- <script>
+      document.querySelectorAll('.shouchang-button').forEach(function(button) {
+          button.addEventListener('click', function() {
+              var img = this.querySelector('.heart');
+              var perfumeId = this.getAttribute('data-perfume-id'); // 获取香水ID
+              var isFavorite = img.getAttribute('src') === '/static/image/start-icon.webp';
+      
+              // 获取当前登录的用户信息
+              fetch('/get-user-info')
+                  .then(response => response.json())
+                  .then(data => {
+                      if (data.isLoggedIn) {
+                          if (!isFavorite) {
+                              img.src = '/static/image/start-icon.webp';
+                              // 发送POST请求到服务器，添加收藏
+                              fetch('/add-favorite', {
+                                  method: 'POST',
+                                  headers: {
+                                      'Content-Type': 'application/json'
+                                  },
+                                  body: JSON.stringify({ username: data.user, perfumeId: perfumeId })
+                              });
+                          } else {
+                              img.src = '/static/image/start.webp';
+                              // 发送POST请求到服务器，取消收藏
+                              fetch('/remove-favorite', {
+                                  method: 'POST',
+                                  headers: {
+                                      'Content-Type': 'application/json'
+                                  },
+                                  body: JSON.stringify({ username: data.user, perfumeId: perfumeId })
+                              });
+                          }
+                      } else {
+                          // 用户未登录，处理未登录的情况
+                          alert('请先登录！');
+                      }
+                  });
+          });
+      });
+      </script> -->
+      
+      <script>
+         document.addEventListener('DOMContentLoaded', function() {
+             // 检查并更新收藏状态
+             checkAndUpdateFavorites();
+         
+             document.querySelectorAll('.shouchang-button').forEach(function(button) {
+                 button.addEventListener('click', function() {
+                     var img = this.querySelector('.heart');
+                     var perfumeId = this.getAttribute('data-perfume-id');
+                     var isFavorite = img.getAttribute('src') === '/static/image/start-icon.webp';
+         
+                     if (!isFavorite) {
+                         img.src = '/static/image/start-icon.webp';
+                         addFavorite(perfumeId);
+                     } else {
+                         img.src = '/static/image/start.webp';
+                         removeFavorite(perfumeId);
+                     }
+                 });
+             });
+         });
+         
+         function checkAndUpdateFavorites() {
+    fetch('/get-user-favorites')
+        .then(response => response.json())
+        .then(favorites => {
+            favorites.forEach(favoriteId => {
+                var button = document.querySelector('.shouchang-button[data-perfume-id="' + favoriteId + '"]');
+                console.log('Button for perfume ID ' + favoriteId + ':', button); // 打印找到的按钮元素
+                if (button) {
+                    var img = button.querySelector('.heart');
+                    img.src = '/static/image/start-icon.webp';
+                }
+            });
+        });
+}
+
+         
+         function addFavorite(perfumeId) {
+             fetch('/add-favorite', {
+                 method: 'POST',
+                 headers: {
+                     'Content-Type': 'application/json'
+                 },
+                 body: JSON.stringify({ perfumeId: perfumeId })
+             });
+         }
+         
+         function removeFavorite(perfumeId) {
+             fetch('/remove-favorite', {
+                 method: 'POST',
+                 headers: {
+                     'Content-Type': 'application/json'
+                 },
+                 body: JSON.stringify({ perfumeId: perfumeId })
+             });
+         }
+         </script>
+         
+</body>
+</html>
