@@ -147,6 +147,25 @@ router.get('/get-user-favorites', async (req, res) => {
 });
 
 
+router.post('/update-user-info', async function(req, res) {
+  if (req.session.user) {
+      try {
+        
+          const { UserName, Email, Gender, jianjie } = req.body;
+          const userId = req.session.user.id;
+          await User.update(
+              { UserName, Email, Gender, jianjie },
+              { where: { id: userId } }
+          );
+          res.sendStatus(200);
+      } catch (error) {
+          console.error(error);
+          res.status(500).send('服务器错误');
+      }
+  } else {
+      res.status(403).send('未登录');
+  }
+});
 
 
 

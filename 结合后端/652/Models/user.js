@@ -26,6 +26,16 @@ const perModel = db.define('user', {
         allowNull: false,
         field:'email'
     },
+    Gender: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        field:'gender'
+    },
+    jianjie: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        field:'jianjie'
+    },
 }, {
    
    // modelName: 'Student',

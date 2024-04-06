@@ -120,7 +120,7 @@
                      </a>
                   </li>
                   <li class="white">
-                     /  
+                     
                   </li>
                   <li class="base">
                      myself
@@ -132,37 +132,38 @@
    </div>
 </div>
 <div class="introduce">
-   <div class="introduce-main">
-
-
-   <div class="tou">
-      <img src="/static/picture/头像.webp" width="220px">
-   </div>
-      <div class="r">
-         <ul>
-               <li>
-                  昵称：<input type="text" ng-model="info.uemail" class="passwordInput">
-               </li>
-               <li>
-         <div>
-          <span style="padding-right: 10px;">性别:</span>
-           男<input type="radio" name="gender" value="男"/>
-         女<input type="radio" name="gender" value="女"/>
-     </div>
-               <li>
-                  年龄：<input type="text" ng-model="info.uemail" class="passwordInput">
-               </li>
-               <li>
-                  喜好：<input type="text" ng-model="info.uemail" class="passwordInput">
-               </li>
-               <li>
-                  <span>个人简介：</span>
-                  <textarea ng-model="info.udesc" cols="60" rows="6" style="border: 1px solid #d7d7d7;text-indent: 3px;width: 100%;height: 100%;font-family: STHeiti, MingLiu;;"></textarea>
-               </li>
-         </ul>
-         </div>
- </div>
+    <div class="introduce-main">
+        <div class="tou">
+            <img src="/static/picture/头像.webp" width="220px">
+        </div>
+        <div class="r">
+            <form id="userInfoForm">
+                <ul>
+                    <li>
+                        昵称：<input type="text" name="UserName" value="<%= user.UserName %>" class="passwordInput">
+                    </li>
+                    <li>
+                        <div>
+                            <span style="padding-right: 10px;">性别:</span>
+                            男<input type="radio" name="Gender" value="男" <%= user.Gender === '男' ? 'checked' : '' %>/>
+                            女<input type="radio" name="Gender" value="女" <%= user.Gender === '女' ? 'checked' : '' %>/>
+                        </div>
+                    </li>
+                    <li>
+                        邮箱：<input type="email" name="Email" value="<%= user.Email %>" class="passwordInput">
+                    </li>
+                    <li>
+                        <span>个人简介：</span>
+                        <textarea name="jianjie" cols="60" rows="6" style="border: 1px solid #d7d7d7;text-indent: 3px;width: 100%;height: 100%;font-family: STHeiti, MingLiu;"><%= user.jianjie %></textarea>
+                    </li>
+                </ul>
+                <button type="submit">保存</button>
+            </form>
+        </div>
+    </div>
 </div>
+
+
 <div style="font-size:35px;color:rgb(80, 122, 174);margin-left: 150px;">已收藏：</div>
 <div style="height:10px;margin:0;position:relative;clear:both;border-bottom: 3px solid #eee;"></div>
 <div class="items" id="items" compile="items">
@@ -188,9 +189,7 @@
                <br>
                后调：
            </div>
-           <div class="shouchang-button" data-perfume-id="<%= perfume.id %>">
-            <img class="heart" src="/static/image/start.webp" style="width: 30px;">
-          </div>
+           
        </div>
    </div>
 </div>
@@ -250,7 +249,7 @@
    <script src="/static/js/wow.min.js"></script>
    <!--<< Wow Animation js >>-->
    <script src="/static/js/main.js"></script>
-   <script>
+   <!-- <script>
     document.addEventListener('DOMContentLoaded', function() {
         // 检查并更新收藏状态
         checkAndUpdateFavorites();
@@ -317,6 +316,27 @@
             body: JSON.stringify({ perfumeId: perfumeId })
         });
     }
+    </script> -->
+    <script>
+        document.getElementById('userInfoForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            console.log('Form data:', formData);
+            fetch('/update-user-info', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('信息更新成功');
+                } else {
+                    alert('信息更新失败');
+                }
+            })
+            .catch(error => {
+                console.error('Error updating user info:', error);
+            });
+        });
     </script>
     
 </body>
