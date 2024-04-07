@@ -88,7 +88,7 @@
          <% perfumes.forEach(function(perfume) { %>
          <div class="items" id="items" compile="items">
             <div class="item ng-scope">
-                <a href="" target="_blank" class="imgborder">
+                <a href="/perfumeDetail/<%= perfume.id %>"  target="_blank" class="imgborder">
                   <img src="/static/picture/perfume/<%= perfume.id %>.png" class="noxx" onerror="this.onerror=null;this.src='/static/picture/image/六神花露水.webp';">
                 </a>
                 
@@ -96,7 +96,7 @@
                   <a href="/perfumeDetail/<%= perfume.id %>" target="_blank">
                      <h2><%= perfume.perfumeName %></h2>
                  </a>
-                  </a>
+                 
                   <div class="score-and-stars">
                      <div class="score">
                          <%= perfume.score ? perfume.score + '分' : '暂无' %>
@@ -158,7 +158,7 @@
                </ul>
             </div>
          
-               <a href="/geren.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
+            <a href="/profile" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
                   <span>
                      <i class="bi bi-chevron-right"></i>             
                   </span>

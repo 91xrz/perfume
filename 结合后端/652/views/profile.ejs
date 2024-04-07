@@ -50,17 +50,17 @@
             </div>
             <ul class="main-menu">
                <li>
-                  <a href="">
+                  <a href="/index.html">
                      首页
                   </a>
                </li>
                <li>
-                  <a href="brand.html">
+                  <a href="/brand">
                      品牌
                   </a>
                </li>
                <li class="sub-menu">
-                  <a href="service.html #services">
+                  <a href="/service.html">
                      香调
                   </a>
                </li>
@@ -72,7 +72,7 @@
                </div>
 
                <li>
-                  <a href="protfolio.html">
+                  <a href="/tiaoxiangshi">
                      调香师
                   </a>
                </li>
@@ -80,27 +80,37 @@
                   <a href="blog.html">排行榜</a>
                </li>
                <li >
-                  <a href="blog-details.html">社区</a>
+                  <a href="/community">社区</a>
                </li>
             </ul>
             <div class="menu__components d-flex align-items-center">
-               <a href="contact.html" class="d-flex fw-500 cmn--btn align-items-center gap-2">
-                  <span class="get__text">
-                     Join us
-                  </span>
-                  <span>
-                     <i class="bi bi-arrow-right fz-20"></i>
-                  </span>
-               </a>
-               <div class="header-bar d-lg-none">
-                  <span></span>
-                  <span></span>
-                  <span></span>
+               <div class="a">
+                  <a href="/sousuo" class="c" id="searchButton">
+                     <img src="/static/image/999.webp" style="width:30px">
+                  </a>
+              </div>
+               <div id="joinUsButton"> 
+                <a href="/contact.html" class="d-flex fw-500 cmn--btn align-items-center gap-2">
+                   <span class="get__text">
+                      Join us
+                   </span>
+                   <span>
+                      <i class="bi bi-arrow-right fz-20"></i>                       
+                   </span>
+                </a>
                </div>
-               <div class="remove__click">
-                  <i class="bi bi-list"></i>
-               </div>
-            </div>
+                <div id="userAvatar" style="display: none;"class="remove__click">
+                  <img src="/static/image/头像.png"  >
+              
+              </div>
+                  <div id="userName"></div>
+                <div class="header-bar d-lg-none">
+                   <span></span>
+                   <span></span>
+                   <span></span>
+                </div>
+               
+             </div>
          </div>
       </div>
    </header>
@@ -166,33 +176,60 @@
 
 <div style="font-size:35px;color:rgb(80, 122, 174);margin-left: 150px;">已收藏：</div>
 <div style="height:10px;margin:0;position:relative;clear:both;border-bottom: 3px solid #eee;"></div>
-<div class="items" id="items" compile="items">
- 
-  
-  
-   <div class="item ng-scope" href="xiangshui.html">
-       <a href="xiangshui.html" target="_blank" class="imgborder">
-           <img src="/static/image/六神花露水.webp" class="noxx" onerror="imgcdnfallback(this,/static/image/六神花露水.webp)">
-       </a>
-       <div class="detail" href="xiangshui.html">
-           <a   target="_blank" href="xiangshui.html">
-               <h2>六神 花露水 Liushen Liushen Florida Water 六神花露水，1990</h2>
+<% perfumes.forEach(function(perfume) { %>
+   <div class="items" id="items" compile="items">
+      <div class="item ng-scope">
+          <a href="/perfumeDetail/<%= perfume.id %>"  target="_blank" class="imgborder">
+            <img src="/static/picture/perfume/<%= perfume.id %>.png" class="noxx" onerror="this.onerror=null;this.src='/static/picture/image/六神花露水.webp';">
+          </a>
+          
+          <div class="detail">
+            <a href="/perfumeDetail/<%= perfume.id %>" target="_blank">
+               <h2><%= perfume.perfumeName %></h2>
            </a>
-           <div class="score">
-               <span class="star0 sa10"></span>
-               "9.9分~人评分"
-           </div>
-           <div class="info">
-               前调：
-               <br>
-               中调：
-               <br>
-               后调：
-           </div>
            
+            <div class="score-and-stars">
+               <div class="score">
+                   <%= perfume.score ? perfume.score + '分' : '暂无' %>
+               </div>
+               <div class="stars">
+                  <% 
+                    var fullStars = Math.floor(perfume.score / 2); 
+                    var halfStar = perfume.score % 2 >= 1.5; 
+                    var partialStar = perfume.score % 2 >= 1 && perfume.score % 2 < 1.5; 
+                    var starSlots = 5; 
+                  %>
+                  <% for(var i = 0; i < fullStars; i++) { %>
+                     <img src="/static/image/4.png" alt="Star" class="star"> <!-- 满星 -->
+                   <% } %>
+                   <% if(partialStar) { %>
+                     <img src="/static/image/3.png" alt="Star" class="star"> <!-- 1到1.5分的星星 -->
+                   <% } %>
+                   <% if(halfStar) { %>
+                     <img src="/static/image/2.png" alt="Star" class="star"> <!-- 0到1分的星星 -->
+                   <% } %>
+                   <% for(var i = fullStars + (partialStar ? 1 : 0) + (halfStar ? 1 : 0); i < starSlots; i++) { %>
+                     <img src="/static/image/1.png" alt="Star" class="star"> <!-- 空星填充 -->
+                   <% } %>
+                </div>
+               </div>
+            <div class="info">
+                <!-- 动态插入前调、中调、后调 -->
+                前调：<%= perfume.qiandiao %>
+                <br>
+                中调：<%= perfume.zhongdiao %>
+                <br>
+                后调：<%= perfume.houdiao %>
+            </div>
+        </div>
+        <br><br>
+        <div class="shouchang-button" data-perfume-id="<%= perfume.id %>">
+         <img class="heart" src="/static/image/start.webp" style="width: 30px;">
        </div>
+      </div>
+     
    </div>
-</div>
+   <% }); %>
 </div>
 </section>
 
@@ -222,7 +259,42 @@
       </div>
    </div>
 </div>
+<div class="subside__barmenu sub__contact">
+   <div class="remove__click d-flex justify-content-center align-items-center">
+      <i class="bi bi-x-lg"></i>
+   </div>
+   <div>
+      <img src="static/picture/logo.png" alt="img" style="height: 50px;width: 100px;">
+   </div>
+   <div class="sub__contact__wrapper d-grid">
+      <p style="font-size: x-large;"><strong>欢迎您！</strong><img src="static/image/life.webp" style="width: 50%;height:30px;"></p>
+      <a href="index.html" class="side-logo">
+         <img src="/static/picture/头像.webp" alt="img" class="side-logo1">
+      </a>
+      <ul>
+         <li>
+            昵称：<input type="text" class="passwordInput" readonly>
+         </li>
+      </ul>
+   </div>
 
+   <a href="/profile" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
+         <span>
+            <i class="bi bi-chevron-right"></i>             
+         </span>
+         <span class="get__text">
+           个人信息
+         </span>
+      </a>
+      <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2 logout-button">
+         <span>
+            <i class="bi bi-chevron-right"></i>             
+         </span>
+         <span class="get__text">
+            退出登录
+         </span>
+      </a>
+</div> 
 
  <div class="progress-wrap">
       <svg class="progress-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
@@ -249,7 +321,7 @@
    <script src="/static/js/wow.min.js"></script>
    <!--<< Wow Animation js >>-->
    <script src="/static/js/main.js"></script>
-   <!-- <script>
+   <script>
     document.addEventListener('DOMContentLoaded', function() {
         // 检查并更新收藏状态
         checkAndUpdateFavorites();
@@ -316,28 +388,40 @@
             body: JSON.stringify({ perfumeId: perfumeId })
         });
     }
-    </script> -->
-    <script>
-        document.getElementById('userInfoForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var formData = new FormData(this);
-            console.log('Form data:', formData);
-            fetch('/update-user-info', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('信息更新成功');
-                } else {
-                    alert('信息更新失败');
-                }
-            })
-            .catch(error => {
-                console.error('Error updating user info:', error);
-            });
-        });
     </script>
+    <script>
+      document.getElementById('userInfoForm').addEventListener('submit', function(event) {
+          event.preventDefault(); // 阻止表单默认提交行为
+  
+          // 手动构建表单数据对象
+          var userInfo = {
+              UserName: document.querySelector('input[name="UserName"]').value,
+              Email: document.querySelector('input[name="Email"]').value,
+              Gender: document.querySelector('input[name="Gender"]:checked').value,
+              jianjie: document.querySelector('textarea[name="jianjie"]').value
+          };
+               console.log(userInfo);
+          fetch('/update-user-info', { // 发送POST请求到服务器端
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json' // 指定发送数据的格式为JSON
+              },
+              body: JSON.stringify(userInfo) // 将对象转换为JSON字符串
+          })
+          .then(response => response.json()) // 解析JSON响应
+          .then(data => {
+              if (data.success) {
+                  alert('信息更新成功');
+              } else {
+                  alert('信息更新失败: ' + data.message);
+              }
+          })
+          .catch(error => {
+              console.error('Error updating user info:', error);
+              alert('信息更新失败: ' + error.message);
+          });
+      });
+  </script>
     
 </body>
 </html>

@@ -150,22 +150,22 @@ router.get('/get-user-favorites', async (req, res) => {
 router.post('/update-user-info', async function(req, res) {
   if (req.session.user) {
       try {
-        
           const { UserName, Email, Gender, jianjie } = req.body;
           const userId = req.session.user.id;
           await User.update(
               { UserName, Email, Gender, jianjie },
               { where: { id: userId } }
           );
-          res.sendStatus(200);
+          res.json({ success: true, message: '信息更新成功' });
       } catch (error) {
           console.error(error);
-          res.status(500).send('服务器错误');
+          res.status(500).json({ success: false, message: '服务器错误', error: error.message });
       }
   } else {
-      res.status(403).send('未登录');
+      res.status(403).json({ success: false, message: '未登录' });
   }
 });
+
 
 
 
