@@ -5045,3 +5045,8 @@ p {
   justify-content: flex-start; /* 从行的开始处对齐项目 */
   gap: 10px; /* 设置分数和星星之间的间距 */
 }
+
+.detail a {
+  position: relative; /* 必须设置定位属性才能使 z-index 生效 */
+  z-index: 10; /* 设置一个足够高的值以确保链接位于其他元素之上 */
+}
