@@ -28,12 +28,12 @@ const perModel = db.define('user', {
     },
     Gender: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         field:'gender'
     },
     jianjie: {
         type: DataTypes.TEXT,
-        allowNull: false,
+        allowNull: true,
         field:'jianjie'
     },
 }, {
