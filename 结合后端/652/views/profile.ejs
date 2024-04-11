@@ -24,6 +24,61 @@
             font-size: 30px;
         }
     }
+    /* 设置表单的样式 */
+    #userInfoForm {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 设置表单项目列表的样式 */
+    #userInfoForm ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    /* 设置表单项目的样式 */
+    #userInfoForm li {
+        margin-bottom: 10px;
+    }
+
+    /* 设置输入框和文本区域的样式 */
+    #userInfoForm input[type="text"],
+    #userInfoForm input[type="email"],
+    #userInfoForm textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #d7d7d7;
+        border-radius: 5px;
+        font-size: 14px;
+        color: #333;
+    }
+
+    /* 设置单选按钮和其标签的样式 */
+    #userInfoForm input[type="radio"] + label {
+        margin-right: 10px;
+        color: #333;
+        
+    }
+
+    /* 设置保存按钮的样式 */
+    #userInfoForm button {
+        background-color: #f896c7;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    /* 当鼠标悬停在按钮上时，改变背景颜色 */
+    #userInfoForm button:hover {
+        background-color: #f99dc9;
+    }
+
    </style>
 </head>
 <body>
@@ -149,9 +204,9 @@
         <div class="r">
             <form id="userInfoForm">
                 <ul>
-                    <li>
-                        昵称：<input type="text" name="UserName" value="<%= user.UserName %>" class="passwordInput">
-                    </li>
+                  <li>
+                     昵称：<input type="text" name="UserName" value="<%= user.UserName %>" class="passwordInput" style="width: 30%;">
+                 </li>                 
                     <li>
                         <div>
                             <span style="padding-right: 10px;">性别:</span>
@@ -160,12 +215,12 @@
                         </div>
                     </li>
                     <li>
-                        邮箱：<input type="email" name="Email" value="<%= user.Email %>" class="passwordInput">
+                        邮箱：<input type="email" name="Email" value="<%= user.Email %>" class="passwordInput" style="width: 30%;">
                     </li>
                     <li>
-                        <span>个人简介：</span>
-                        <textarea name="jianjie" cols="60" rows="6" style="border: 1px solid #d7d7d7;text-indent: 3px;width: 100%;height: 100%;font-family: STHeiti, MingLiu;"><%= user.jianjie %></textarea>
-                    </li>
+                     <span>个人简介：</span>
+                     <textarea name="jianjie" cols="60" rows="6" style="border: 1px solid #d7d7d7; text-indent: 3px; width: 100%; height: 100%; font-family: STHeiti, MingLiu; resize: none;"><%= user.jianjie %></textarea>
+                 </li>                 
                 </ul>
                 <button type="submit">保存</button>
             </form>
