@@ -376,8 +376,8 @@ img {
     <ul class="itemMain">
         <h1><%= perfume.perfumeName %></h1>
         <div class="imgborder1">
-            <img src="" class="noxx" onerror="this.onerror=null;this.src='/static/picture/image/六神花露水.webp';"> <!-- 假设图片URL存储在perfume.image字段 -->
-        </div>
+            <img src="/static/image/<%= dataType === 'shalong' ? '沙龙' : '商业' %>/<%= perfume.id %>.png" class="noxx"onerror="this.onerror=null;this.src='/static/picture/image/六神花露水.webp';"> 
+        </div>        
         <ul class="item_info">
             <li>
                 品牌:

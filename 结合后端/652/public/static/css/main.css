@@ -5051,3 +5051,25 @@ p {
   z-index: 10; /* 设置一个足够高的值以确保链接位于其他元素之上 */
 }
 
+/* Edge浏览器 */
+input:-ms-input-placeholder {
+  color: transparent;
+}
+
+/* Webkit浏览器 */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: #000 !important;
+}
+
+.imgborder {
+  background-color: white; /* 设置背景颜色为白色 */
+}
+

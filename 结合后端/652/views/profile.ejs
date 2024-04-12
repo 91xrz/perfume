@@ -202,6 +202,7 @@
             <img src="/static/picture/头像.webp" width="220px">
         </div>
         <div class="r">
+         <div id="messageContainer"></div>
             <form id="userInfoForm">
                 <ul>
                   <li>
@@ -465,17 +466,36 @@
           })
           .then(response => response.json()) // 解析JSON响应
           .then(data => {
-              if (data.success) {
-                  alert('信息更新成功');
-              } else {
-                  alert('信息更新失败: ' + data.message);
-              }
-          })
-          .catch(error => {
-              console.error('Error updating user info:', error);
-              alert('信息更新失败: ' + error.message);
-          });
-      });
+            var messageContainer = document.getElementById('messageContainer');
+            if (data.success) {
+                messageContainer.innerHTML = `
+                    <div class="alert alert-success" role="alert">
+                        信息更新成功！
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>`;
+            } else {
+                messageContainer.innerHTML = `
+                    <div class="alert alert-danger" role="alert">
+                        信息更新失败: ${data.message}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>`;
+            }
+        })
+        .catch(error => {
+            var messageContainer = document.getElementById('messageContainer');
+            messageContainer.innerHTML = `
+                <div class="alert alert-danger" role="alert">
+                    信息更新失败: ${error.message}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>`;
+        });
+    });
   </script>
     
 </body>

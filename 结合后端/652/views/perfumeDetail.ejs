@@ -75,6 +75,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
 .itemMain .imgborder1 {
+    background-color: white; /* 设置背景颜色为白色 */
     width: 242px;
     height: 242px;
     display: table-cell;
@@ -374,7 +375,13 @@ img {
 
 <div>
     <ul class="itemMain">
-        <h1><%= perfume.perfumeName %></h1>
+        <div style="display: flex; align-items: center;">
+            <h1><%= perfume.perfumeName %></h1>
+            <div class="shouchang-button" data-perfume-id="<%= perfume.id %>" style="margin-left: 20px;">
+                <img class="heart" src="/static/image/start.webp" style="width: 50px;">
+            </div>
+        </div>
+        
         <div class="imgborder1">
             <img src="/static/picture/perfume/<%= perfume.id %>.png" class="noxx" onerror="this.onerror=null;this.src='/static/picture/image/六神花露水.webp';"> <!-- 假设图片URL存储在perfume.image字段 -->
         </div>
@@ -441,10 +448,6 @@ img {
                     </div>
             </li>
           </ul>
-          <br><br> <br><br>
-          <div class="shouchang-button" data-perfume-id="<%= perfume.id %>">
-            <img class="heart" src="/static/image/start.webp" style="width: 50px;">
-          </div>
         <li class="ajaxodor">
             <br>
             <h5>最明显的气味</h5>

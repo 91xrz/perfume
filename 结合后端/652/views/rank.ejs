@@ -307,7 +307,7 @@ element.style {
             <li class="nose ng-scope">
                 <div class="nose-detail">
                     <a class="nose-avatar" href="/<%=dataType%>/<%=nose.id%>">
-                        <img src="https://img.xssdcdn.com/perfume/163553.jpg!l"> <!-- 假设这里的图片URL固定 -->
+                        <img src="/static/image/<%= dataType === 'shalong' ? '沙龙' : '商业' %>/<%= nose.id %>.png">
                     </a>
                     <a class="nose-about" href="/<%=dataType%>/<%=nose.id%>">
                         <div class="nose-cname">
