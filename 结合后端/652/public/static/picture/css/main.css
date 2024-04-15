@@ -1759,7 +1759,7 @@ p {
   height: 100%;
   position: fixed;
   z-index: 99999;
-  background: url(../../Background.png);
+  background: url(../../Background.png) no-repeat;
   right: -320px;
   top: 0;
   transition: all 0.4s;
@@ -1859,7 +1859,7 @@ p {
   width: 100%;
   z-index: 99;
   transition: all 0.9s;
-  background: url(../../Background.png);
+  background: url(../../Background.png) no-repeat;
   box-shadow: 0px -31px 32px 9px #f4f4f4;
 }
 
