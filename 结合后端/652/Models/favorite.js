@@ -6,14 +6,12 @@ const favModel = db.define('favorites', {
    
     id:{
         type: DataTypes.INTEGER,
-        allowNull: false,
         primaryKey: true,
         autoIncrement: true,
         field:"FavoriteID"
     },
   userid:{
         type: DataTypes.INTEGER,
-        allowNull: false,
         field:'UserID',
     },
     perfumeid:{

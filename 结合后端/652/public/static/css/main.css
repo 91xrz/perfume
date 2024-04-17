@@ -5073,3 +5073,12 @@ input:-webkit-autofill {
   background-color: white; /* 设置背景颜色为白色 */
 }
 
+#userAvatar img {
+  width: 40px;  /* 设置宽度为65像素 */
+  height: 40px;  /* 设置高度为65像素 */
+  border-radius: 50%;
+}
+.side-logo1 {
+  border-radius: 50%;  /* 将边框半径设置为50%，生成圆形 */
+  display: block;  /* 确保图片正确显示，避免链接默认的内联属性导致的布局问题 */
+}
