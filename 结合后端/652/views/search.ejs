@@ -117,7 +117,13 @@
     position: relative;
     font-size: 14px;
     font-family: 'PingFang SC','Microsoft Yahei','Source Han Sans',SimSun, 'Noto Sans CJK SC', 'Noto Sans CJK',source-han-sans-simplified-c, sans-serif;
-}</style>
+}
+@media(min-width:1400px){
+   .container_sousuo{
+   padding-top: 20px;
+ }
+}
+</style>
 </head>
 <body>
 
@@ -213,8 +219,32 @@
             </div>
          </div>
       </div>
+      <div class="container pt-120 pd-120">
+         <div class="row g-4 justify-content-center">
+            <div class="col-lg-8">
+               <div class="breadcrumnd__wrap text-center">
+                  <h1>
+                     搜索
+                  </h1>
+                  <ul class="breakcrumnd__cont justify-content-center">
+                     <li>
+                        <a href="index.html">
+                           Home 
+                        </a>
+                     </li>
+                     <li class="white">
+                        /  
+                     </li>
+                     <li class="base">
+                        search for
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
    </header>
-   <div class="container pt-120 pb-120">
+   <div class="container container_sousuo">
       <div class="row g-4 justify-content-center">
             <div class="shell">
                <input type="text" id="searchInput" placeholder="Search">
