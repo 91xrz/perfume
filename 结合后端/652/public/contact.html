@@ -220,14 +220,14 @@
       </ul>
    </div>
 
-      <a href="/profile" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
-         <span>
-            <i class="bi bi-chevron-right"></i>             
-         </span>
-         <span class="get__text">
-           个人信息
-         </span>
-      </a>
+   <a href="#" id="profileLink" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
+      <span>
+         <i class="bi bi-chevron-right"></i>             
+      </span>
+      <span class="get__text">
+        个人信息
+      </span>
+  </a>
       <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2 logout-button">
          <span>
             <i class="bi bi-chevron-right"></i>             
@@ -302,40 +302,23 @@
 // 注册表单处理
 document.getElementById('form1').addEventListener('submit', function(event) {
     event.preventDefault(); // 阻止表单默认提交
-    // 注意：这里使用了 class 选择器，因为您的 input 没有 name 属性
     var user = document.querySelector('#form1 .input[type="text"]').value;
     var email = document.querySelector('#form1 .input[type="email"]').value;
     var password = document.querySelector('#form1 .input[type="password"]').value;
-    if (!user.trim()) {
-    var alertContainer = document.getElementById('alertContainer');
-    alertContainer.innerHTML = `<div class="alert alert-danger" role="alert">
-                                  用户名不能为空！
-                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="float: right;">
-    <span aria-hidden="true">&times;</span>
-  </button>
-                                </div>`;
-    return; // 中断函数执行
-}
-if (!email.trim()) {
-    var alertContainer = document.getElementById('alertContainer');
-    alertContainer.innerHTML = `<div class="alert alert-danger" role="alert">
-                                  电子邮件不能为空！
-                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-                                </div>`;
-    return; // 中断函数执行
-}
-if (!password.trim()) {
-    var alertContainer = document.getElementById('alertContainer');
-    alertContainer.innerHTML = `<div class="alert alert-danger" role="alert">
-                                  密码不能为空！
-                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-                                </div>`;
-                              }
-    // 使用 fetch 发送请求
+    
+    // 确保所有字段都已填写
+    if (!user.trim() || !email.trim() || !password.trim()) {
+        var alertContainer = document.getElementById('alertContainer');
+        alertContainer.innerHTML = `<div class="alert alert-danger" role="alert">
+                                      所有字段都必须填写！
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>`;
+        return; // 中断函数执行
+    }
+    
+    // 使用 fetch 发送注册请求
     fetch('/register', {
         method: 'POST',
         headers: {
@@ -345,27 +328,35 @@ if (!password.trim()) {
     })
     .then(response => response.json())
     .then(data => {
+        var messageContainer = document.getElementById('registrationMessageContainer');
         if (data.success) {
-            // 更新页面内容
-             var messageContainer = document.getElementById('registrationMessageContainer');
+         document.cookie = 'jwtToken=' + data.token + ';path=/';
             messageContainer.innerHTML = `<div class="alert alert-success" role="alert">
-                                      注册成功，即将跳转到主页…
-                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-                                  </div>`;
-            setTimeout(function() {
-            window.location.href = '/index.html';
-        }, 3000); // 2000毫秒等于2秒
+                                            注册成功，即将跳转到主页…
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>`;
+            setTimeout(() => {
+                window.location.href = '/index.html';
+            }, 3000); // 3秒后跳转
         } else {
-            alert( data.message);
+            messageContainer.innerHTML = `<div class="alert alert-danger" role="alert">
+                                            注册失败: ${data.message}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>`;
         }
+    })
+    .catch(error => {
+        console.error('注册失败:', error);
     });
 });
 
 // 登录表单处理
 document.getElementById('form2').addEventListener('submit', function(event) {
-    event.preventDefault(); // 防止表单默认提交行为
+    event.preventDefault(); // 阻止表单默认提交行为
 
     var name = document.querySelector('#form2 .input[type="text"]').value; // 获取用户名
     var password = document.querySelector('#form2 .input[type="password"]').value; // 获取密码
@@ -377,77 +368,60 @@ document.getElementById('form2').addEventListener('submit', function(event) {
         },
         body: JSON.stringify({name, password}) // 确保这里的字段名与后端期望的一致
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('网络问题或服务器错误');
-        }
-        return response.json(); // 解析 JSON 数据
-    })
+    .then(response => response.json())
     .then(data => {
+
+        var messageContainer = document.getElementById('messageContainer');
         if (data.success) {
-         var messageContainer = document.getElementById('messageContainer');
-            messageContainer.innerHTML = `
-              <div class="alert alert-success" role="alert">
-                登录成功！欢迎回来${name}！即将跳转到主页…
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-              </div>`;
-              setTimeout(function() {
-            window.location.href = '/index.html';
-        }, 3000); // 2000毫秒等于2秒
+           document.cookie = 'jwtToken=' + data.token + ';path=/';
+            localStorage.setItem('token', data.token); // 保存 JWT 到 localStorage
+            messageContainer.innerHTML = `<div class="alert alert-success" role="alert">
+                                            登录成功！欢迎回来${name}！即将跳转到主页…
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>`;
+            setTimeout(() => {
+                window.location.href = '/index.html';
+            }, 3000); // 3秒后跳转
         } else {
-         var messageContainer = document.getElementById('messageContainer');
-            messageContainer.innerHTML = `<div class="alert alert-primary" role="alert">
-              ${data.message} <a href="#" class="alert-link">请重试</a>.
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-            </div>`;
+            messageContainer.innerHTML = `<div class="alert alert-danger" role="alert">
+                                            登录失败: ${data.message}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>`;
         }
     })
     .catch(error => {
-      var messageContainer = document.getElementById('messageContainer');
-        messageContainer.innerHTML = `<div class="alert alert-danger" role="alert">
-          登录失败，请稍后再试。 <a href="#" class="alert-link">请重试</a>.
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-        </div>`;
+        console.error('登录错误:', error);
     });
 });
-
-
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', () => {
     // 检查用户是否已经登录
-    fetch('/check-login')
+    fetch('/check-login', {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    })
     .then(response => response.json())
     .then(data => {
         if (data.isLoggedIn) {
-           
-            // updateUserInterface(data.user); // 假设从服务器返回了用户信息
             document.getElementById('form2').style.display = 'none'; // 隐藏登录表单
-            // 使用自定义警告替代 alert
             var messageContainer = document.getElementById('loginMessageContainer');
-            messageContainer.innerHTML = `
-            <div class="alert alert-success" role="alert">
-                您已经成功登录，无需再次登录！
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="float: right;">
-          <span aria-hidden="true">&times;</span>
-                           </button>
-              </div>`;
-         }
+            messageContainer.innerHTML = `<div class="alert alert-success" role="alert">
+                                            您已经成功登录，无需再次登录！
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>`;
+        }
     })
     .catch(error => {
-      console.error(error);
-        // 可以选择在这里显示一些错误信息或进行其他错误处理
-        var messageContainer = document.getElementById('loginMessageContainer');
-        messageContainer.innerHTML = `
-        <div class="alert alert-danger" role="alert">
-          检查登录状态失败，请刷新页面重试。
-        </div>`;
+        console.error('检查登录状态失败:', error);
     });
 });
+
       
    </script>
 </body>

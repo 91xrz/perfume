@@ -342,14 +342,14 @@
       </ul>
    </div>
 
-   <a href="/profile" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
-         <span>
-            <i class="bi bi-chevron-right"></i>             
-         </span>
-         <span class="get__text">
-           个人信息
-         </span>
-      </a>
+   <a href="#" id="profileLink" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
+      <span>
+          <i class="bi bi-chevron-right"></i>             
+      </span>
+      <span class="get__text">
+        个人信息
+      </span>
+  </a>
       <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2 logout-button">
          <span>
             <i class="bi bi-chevron-right"></i>             
@@ -385,95 +385,34 @@
    <script src="/static/js/wow.min.js"></script>
    <!--<< Wow Animation js >>-->
    <script src="/static/js/main.js"></script>
-   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // 检查并更新收藏状态
-        checkAndUpdateFavorites();
-    
-        document.querySelectorAll('.shouchang-button').forEach(function(button) {
-            button.addEventListener('click', function() {
-                var img = this.querySelector('.heart');
-                var perfumeId = this.getAttribute('data-perfume-id');
-                var isFavorite = img.getAttribute('src') === '/static/image/start-icon.webp';
-    
-                // 检查登录状态
-                fetch('/check-login')
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.isLoggedIn) {
-                            // 已登录，处理收藏逻辑
-                            if (!isFavorite) {
-                                img.src = '/static/image/start-icon.webp';
-                                addFavorite(perfumeId);
-                            } else {
-                                img.src = '/static/image/start.webp';
-                                removeFavorite(perfumeId);
-                            }
-                        } else {
-                            // 未登录，跳转到 contact.html
-                            window.location.href = '/contact.html';
-                        }
-                    });
-            });
-        });
-    });
-    
-    function checkAndUpdateFavorites() {
-        fetch('/get-user-favorites')
-            .then(response => response.json())
-            .then(favorites => {
-                favorites.forEach(favoriteId => {
-                    var button = document.querySelector('.shouchang-button[data-perfume-id="' + favoriteId + '"]');
-                    console.log('Button for perfume ID ' + favoriteId + ':', button); // 打印找到的按钮元素
-                    if (button) {
-                        var img = button.querySelector('.heart');
-                        img.src = '/static/image/start-icon.webp';
-                    }
-                });
-            });
-    }
-    
-    function addFavorite(perfumeId) {
-        fetch('/add-favorite', {
+
+<script>
+    document.getElementById('userInfoForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // 阻止表单默认提交行为
+
+        // 手动构建表单数据对象
+        var userInfo = {
+            UserName: document.querySelector('input[name="UserName"]').value,
+            Email: document.querySelector('input[name="Email"]').value,
+            Gender: document.querySelector('input[name="Gender"]:checked').value,
+            jianjie: document.querySelector('textarea[name="jianjie"]').value
+        };
+        console.log(userInfo);
+        fetch('/update-user-info', { // 发送POST请求到服务器端
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json', // 指定发送数据的格式为JSON
+                'Authorization': 'Bearer ' + localStorage.getItem('token') // 添加JWT令牌
             },
-            body: JSON.stringify({ perfumeId: perfumeId })
-        });
-    }
-    
-    function removeFavorite(perfumeId) {
-        fetch('/remove-favorite', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ perfumeId: perfumeId })
-        });
-    }
-    </script>
-    <script>
-      document.getElementById('userInfoForm').addEventListener('submit', function(event) {
-          event.preventDefault(); // 阻止表单默认提交行为
-  
-          // 手动构建表单数据对象
-          var userInfo = {
-              UserName: document.querySelector('input[name="UserName"]').value,
-              Email: document.querySelector('input[name="Email"]').value,
-              Gender: document.querySelector('input[name="Gender"]:checked').value,
-              jianjie: document.querySelector('textarea[name="jianjie"]').value
-          };
-               console.log(userInfo);
-          fetch('/update-user-info', { // 发送POST请求到服务器端
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json' // 指定发送数据的格式为JSON
-              },
-              body: JSON.stringify(userInfo) // 将对象转换为JSON字符串
-          })
-          .then(response => response.json()) // 解析JSON响应
-          .then(data => {
+            body: JSON.stringify(userInfo) // 将对象转换为JSON字符串
+        })
+        .then(response => {
+            if (!response.ok) { // 检查响应是否成功
+                throw new Error('Failed to update user info');
+            }
+            return response.json(); // 解析JSON响应
+        })
+        .then(data => {
             var messageContainer = document.getElementById('messageContainer');
             if (data.success) {
                 messageContainer.innerHTML = `
@@ -504,7 +443,8 @@
                 </div>`;
         });
     });
-  </script>
+</script>
+
     
 </body>
 </html>

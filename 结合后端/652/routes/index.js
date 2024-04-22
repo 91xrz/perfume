@@ -3,7 +3,8 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const User= require('../Models/user'); 
 const Fav= require('../Models/favorite');
-const session = require('express-session');
+const authenticate = require('./authenticate');
+const { generateToken } = require('./jwtUtils');
 const router =express.Router();
 
 
@@ -14,24 +15,6 @@ router.get('/', function(req, res, next) {
 
 
 router.use(bodyParser.json());
-// 注册路由
-router.post('/register', async (req, res) => {
-  try {
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
-      const newUser = await User.create({
-        UserName: req.body.user,
-        Email: req.body.email,
-        Password: hashedPassword
-      });
-      // 注册成功后自动登录
-      req.session.user = { id: newUser.id, name: newUser.UserName, email: newUser.Email };
-      res.json({ success: true, user: { name: newUser.UserName } }); // 注意这里的name属性需要与你的User模型对应
-  } catch (error) {
-    console.log(error);
-    res.json({ success: false, message: '注册失败', error: error.message });
-  }
-});
-
 // 登录路由
 router.post('/login', async (req, res) => {
   try {
@@ -41,50 +24,64 @@ router.post('/login', async (req, res) => {
       }
       const passwordValid = await bcrypt.compare(req.body.password, user.Password);
       if (passwordValid) {
-          // 登录成功, 创建用户会话
-          req.session.user = { id: user.id, name: user.UserName, email: user.Email };
-          res.json({ success: true, user: { name: user.UserName } });
+          const token = generateToken(user);
+          res.cookie('jwt', token, { httpOnly: false, secure: false }); // 设置JWT到Cookie
+          res.json({ success: true, token, user: { name: user.UserName } });
       } else {
           res.json({ success: false, message: '密码错误' });
       }
   } catch (error) {
-     console.log(error);
+      console.log(error);
       res.json({ success: false, message: '登录过程中出现错误' });
   }
 });
 
-
-router.get('/get-user-info', (req, res) => {
-  if (req.session.user) {
-      res.json({ isLoggedIn: true, user: req.session.user });
-  } else {
-      res.json({ isLoggedIn: false });
+// 注册路由
+router.post('/register', async (req, res) => {
+  try {
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      const newUser = await User.create({
+          UserName: req.body.user,
+          Email: req.body.email,
+          Password: hashedPassword
+      });
+      const token = generateToken(newUser);
+      res.cookie('jwt', token, { httpOnly: false, secure: false }); // 设置JWT到Cookie
+      res.json({ success: true, token, user: { name: newUser.UserName } });
+  } catch (error) {
+      console.log(error);
+      res.json({ success: false, message: '注册失败', error: error.message });
   }
+});
+
+
+router.get('/get-user-info',authenticate, (req, res) => {
+  res.json({ isLoggedIn: true, user: req.user });
 });
 // Express.js后端示例
 router.get('/logout', (req, res) => {
-  req.session.destroy(() => {
-      res.redirect('/'); // 或者返回一个状态，告诉客户端会话已结束
-  });
+  res.clearCookie('jwt'); // 清除JWT Cookie
+  res.status(200).send({ success: true, message: '登出成功' });
 });
 
 
-router.get('/check-login', (req, res) => {
-  if (req.session.user) { // 检查的是 req.session.user 而不是 req.session.isLoggedIn
-      res.json({ isLoggedIn: true });
-  } else {
-      res.json({ isLoggedIn: false });
-  }
-});
+
 
 function getUserInfo(req) {
-  return req.session.user ? req.session.user.name : null;
+  try {
+    const token = req.headers.authorization.split(' ')[1];
+    const decoded = verifyToken(token);
+    return decoded.name; // 假设token中包含name
+  } catch {
+    return null;
+  }
 }
 
 async function getUserIdByUsername(username) {
   const user = await User.findOne({ where: { UserName: username } });
   return user ? user.id : null;
 }
+
 async function addFavorite(userId, perfumeId) {
   // 检查是否已经收藏
   const existingFavorite = await Fav.findOne({
@@ -107,65 +104,42 @@ async function removeFavorite(userId, perfumeId) {
   });
 }
 
-router.post('/add-favorite', async (req, res) => {
-  const username = await getUserInfo(req); // 获取当前登录的用户名
-  const userId = await getUserIdByUsername(username); // 根据用户名获取用户ID
-  const perfumeId = req.body.perfumeId; // 获取香水ID
-  // 添加收藏到数据库
+router.post('/add-favorite', authenticate, async (req, res) => {
+  const userId = req.user.id; // JWT中已包含用户ID
+  const perfumeId = req.body.perfumeId;
   await addFavorite(userId, perfumeId);
-  res.sendStatus(200); // 发送成功响应
+  res.sendStatus(200);
 });
 
-router.post('/remove-favorite', async (req, res) => {
-  const username = await getUserInfo(req); // 获取当前登录的用户名
-  const userId = await getUserIdByUsername(username); // 根据用户名获取用户ID
-  const perfumeId = req.body.perfumeId; // 获取香水ID
-  // 从数据库中移除收藏
+router.post('/remove-favorite', authenticate, async (req, res) => {
+  const userId = req.user.id; // JWT中已包含用户ID
+  const perfumeId = req.body.perfumeId;
   await removeFavorite(userId, perfumeId);
-  res.sendStatus(200); // 发送成功响应
+  res.sendStatus(200);
 });
 
-router.get('/get-user-favorites', async (req, res) => {
-  if (!req.session.user) {
-      // 如果用户未登录，返回空数组
-      return res.json([]);
-  }
-
+router.get('/get-user-favorites', authenticate, async (req, res) => {
   try {
-      // 查询当前登录用户的所有收藏
-      const favorites = await Fav.findAll({
-          where: { userid: req.session.user.id }
-      });
-
-      // 提取香水ID并返回
-      const perfumeIds = favorites.map(favorite => favorite.perfumeid);
-      res.json(perfumeIds);
+    const favorites = await Fav.findAll({ where: { userid: req.user.id } });
+    const perfumeIds = favorites.map(favorite => favorite.perfumeid);
+    res.json(perfumeIds);
   } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: '获取收藏列表失败' });
+    console.log(error);
+    res.status(500).json({ message: '获取收藏列表失败' });
   }
 });
 
-
-router.post('/update-user-info', async function(req, res) {
-  if (req.session.user) {
-      try {
-          const { UserName, Email, Gender, jianjie } = req.body;
-          const userId = req.session.user.id;
-          await User.update(
-              { UserName, Email, Gender, jianjie },
-              { where: { id: userId } }
-          );
-          res.json({ success: true, message: '信息更新成功' });
-      } catch (error) {
-          console.error(error);
-          res.status(500).json({ success: false, message: '服务器错误', error: error.message });
-      }
-  } else {
-      res.status(403).json({ success: false, message: '未登录' });
+router.post('/update-user-info', authenticate, async function(req, res) {
+  try {
+    const { UserName, Email, Gender, jianjie } = req.body;
+    const userId = req.user.id; // JWT中已包含用户ID
+    await User.update({ UserName, Email, Gender, jianjie }, { where: { id: userId } });
+    res.json({ success: true, message: '信息更新成功' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: '服务器错误', error: error.message });
   }
 });
-
 
  // 测试合并
 

@@ -408,14 +408,15 @@ ul, li, dl, dd, dt {
        </ul>
     </div>
  
-    <a href="/profile" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
-          <span>
-             <i class="bi bi-chevron-right"></i>             
-          </span>
-          <span class="get__text">
-            个人信息
-          </span>
-       </a>
+    <a href="#" id="profileLink" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
+        <span>
+            <i class="bi bi-chevron-right"></i>             
+        </span>
+        <span class="get__text">
+          个人信息
+        </span>
+    </a>
+    
        <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2 logout-button">
           <span>
              <i class="bi bi-chevron-right"></i>             
@@ -533,7 +534,8 @@ ul, li, dl, dd, dt {
         fetch('/community/publish', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
             },
             body: JSON.stringify(postData)
         })

@@ -301,62 +301,217 @@ $(function () {
     })
 });
 //>> Search Popup <<//
+
+$(document).ready(function() {
+	// 请求获取用户信息
+	$.ajax({
+		url: '/get-user-info',
+		type: 'GET',
+		headers: {
+			'Authorization': 'Bearer ' + localStorage.getItem('token') // 使用存储在 localStorage 中的 token
+		},
+		success: function(data) {
+			if (data.isLoggedIn) {
+				$('.subside__barmenu').find('.passwordInput').val(data.user.name); // 显示用户名
+			}
+		},
+		error: function(xhr, status, error) {
+			console.error('Failed to fetch user info:', error);
+		}
+	});
+
+	// 处理登出逻辑
+	$('.subside__barmenu').find('.cmn--btn').last().on('click', function(event) {
+		event.preventDefault(); // 防止链接跳转
+		$.ajax({
+			url: '/logout',
+			type: 'GET',
+			headers: {
+				'Authorization': 'Bearer ' + localStorage.getItem('token') // 使用存储在 localStorage 中的 token
+			},
+			success: function() {
+				localStorage.removeItem('token'); // 登出后清除 token
+				window.location.href = '/contact.html'; // 重定向到联系页面或登录页面
+			},
+			error: function(xhr, status, error) {
+				console.error('Logout failed:', error);
+			}
+		});
+	});
+});
+
+// 窗口加载完毕后执行
 window.onload = function() {
-    // 发送请求到后端以检查用户是否已登录
-   // 使用Fetch API调用'/get-user-info'路由
-fetch('/get-user-info')
-    .then(response => response.json()) // 将响应转换为JSON
-    .then(data => {
-        // 根据返回的数据更新页面元素
-        if (data.isLoggedIn) {
-            // 隐藏登录按钮
-            document.getElementById('joinUsButton').style.display = 'none';
+	fetch('/get-user-info', {
+		headers: {
+			'Authorization': 'Bearer ' + localStorage.getItem('token') // 使用存储在 localStorage 中的 token
+		}
+	})
+	.then(response => {
+		if (!response.ok) {
+			throw new Error('Network response was not ok.');
+		}
+		return response.json(); // 将响应转换为JSON
+	})
+	.then(data => {
+		// 根据返回的数据更新页面元素
+		if (data.isLoggedIn) {
+			// 隐藏登录按钮
+			document.getElementById('joinUsButton').style.display = 'none';
 
-            // 显示用户头像和用户信息（我们假设user对象包含userName属性）
-            document.getElementById('userAvatar').style.display = 'block';
-            // 此处我们假设你已经有一个元素用于显示用户名，如果没有，你应该在HTML中添加
-            document.getElementById('userName').textContent = data.user.name; // 假设用户名存储在data.user.userName
-        } else {
-         console.log(data);
-            // 显示登录按钮
-            document.getElementById('joinUsButton').style.display = 'block';
+			// 显示用户头像和用户信息
+			document.getElementById('userAvatar').style.display = 'block';
+			document.getElementById('userName').textContent = data.user.name;
+		} else {
+			console.log(data);
+			// 显示登录按钮
+			document.getElementById('joinUsButton').style.display = 'block';
 
-            // 隐藏用户头像
-            document.getElementById('userAvatar').style.display = 'none';
-        }
-    })
-    .catch(error => {
-        console.error('Error fetching user info:', error);
-    });
-
+			// 隐藏用户头像
+			document.getElementById('userAvatar').style.display = 'none';
+		}
+	})
+	.catch(error => {
+		console.error('Error fetching user info:', error);
+	});
 };
 
 
-
 $(document).ready(function() {
-	$.get('/get-user-info', function(data) {
-		if (data.isLoggedIn) {
-			// Display the user's name
-			$('.subside__barmenu').find('.passwordInput').val(data.user.name);
-			// Set the logout button text and functionality
-			$('.subside__barmenu').find('.logout-button .get__text').text('退出登录');
-			$('.subside__barmenu').find('.logout-button').on('click', function(event) {
-				event.preventDefault(); // Prevent link navigation
-				$.get('/logout', function() {
-					window.location.href = '/contact.html'; // Redirect after logout
+	$.ajax({
+		url: '/get-user-info',
+		type: 'GET',
+		headers: {
+			'Authorization': 'Bearer ' + localStorage.getItem('token')  // 假设 JWT 令牌存储在 localStorage 中
+		},
+		success: function(data) {
+			if (data.isLoggedIn) {
+				$('.subside__barmenu').find('.passwordInput').val(data.user.name);
+				$('.subside__barmenu').find('.logout-button .get__text').text('退出登录');
+				$('.subside__barmenu').find('.logout-button').on('click', function(event) {
+					event.preventDefault(); // Prevent link navigation
+					$.ajax({
+						url: '/logout',
+						type: 'GET',
+						headers: {
+							'Authorization': 'Bearer ' + localStorage.getItem('token')
+						},
+						success: function() {
+							window.location.href = '/contact.html'; // Redirect after logout
+							localStorage.removeItem('token'); // 清除 token
+						},
+						error: function() {
+							console.error('Logout failed');
+						}
+					});
 				});
-			});
-		} else {
-			// Hide the user's name field
+			} else {
+				$('.subside__barmenu').find('.passwordInput').parent().hide();
+				$('.subside__barmenu').find('.logout-button .get__text').text('登录');
+				$('.subside__barmenu').find('.logout-button').on('click', function(event) {
+					event.preventDefault(); // Prevent link navigation
+					window.location.href = '/login.html'; // Redirect to login page
+				});
+			}
+		},
+		error: function() {
+			console.log('Failed to fetch user info');
 			$('.subside__barmenu').find('.passwordInput').parent().hide();
-			// Set the login button text and functionality
 			$('.subside__barmenu').find('.logout-button .get__text').text('登录');
 			$('.subside__barmenu').find('.logout-button').on('click', function(event) {
 				event.preventDefault(); // Prevent link navigation
-				window.location.href = '/contact.html'; // Redirect to login page
+				window.location.href = '/login.html'; // Redirect to login page
 			});
 		}
 	});
+});
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+	// 检查并更新收藏状态
+	checkAndUpdateFavorites();
+
+	document.querySelectorAll('.shouchang-button').forEach(function(button) {
+		button.addEventListener('click', function() {
+			var img = this.querySelector('.heart');
+			var perfumeId = this.getAttribute('data-perfume-id');
+			var isFavorite = img.getAttribute('src') === '/static/image/start-icon.webp';
+
+			// 检查登录状态
+			fetch('/get-user-info', {
+				headers: {
+					'Authorization': 'Bearer ' + localStorage.getItem('token')
+				}
+			})
+			.then(response => response.json())
+			.then(data => {
+				if (data.isLoggedIn) {
+					// 已登录，处理收藏逻辑
+					if (!isFavorite) {
+						img.src = '/static/image/start-icon.webp';
+						addFavorite(perfumeId);
+					} else {
+						img.src = '/static/image/start.webp';
+						removeFavorite(perfumeId);
+					}
+				} else {
+					// 未登录，跳转到登录页面
+					window.location.href = '/index.html';
+				}
+			});
+		});
+	});
+});
+
+function checkAndUpdateFavorites() {
+	fetch('/get-user-favorites', {
+		headers: {
+			'Authorization': 'Bearer ' + localStorage.getItem('token')
+		}
+	})
+	.then(response => response.json())
+	.then(favorites => {
+		favorites.forEach(favoriteId => {
+			var button = document.querySelector('.shouchang-button[data-perfume-id="' + favoriteId + '"]');
+			console.log('Button for perfume ID ' + favoriteId + ':', button); // 打印找到的按钮元素
+			if (button) {
+				var img = button.querySelector('.heart');
+				img.src = '/static/image/start-icon.webp';
+			}
+		});
+	});
+}
+
+function addFavorite(perfumeId) {
+	fetch('/add-favorite', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': 'Bearer ' + localStorage.getItem('token')
+		},
+		body: JSON.stringify({ perfumeId: perfumeId })
+	});
+}
+
+function removeFavorite(perfumeId) {
+	fetch('/remove-favorite', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': 'Bearer ' + localStorage.getItem('token')
+		},
+		body: JSON.stringify({ perfumeId: perfumeId })
+	});
+}
+
+
+
+
+document.getElementById('profileLink').addEventListener('click', function() {
+    window.location.href = '/profile';  // 直接跳转到/profile，Cookie会自动附带
 });
 
 

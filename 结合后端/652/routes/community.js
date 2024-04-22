@@ -3,15 +3,12 @@
 const express = require('express');
 const Community = require('../Models/comm');
 const router = express.Router();
+const authenticate = require('./authenticate');
 // 发布新帖子
-router.post('/publish', async (req, res) => {
-  if (!req.session.user) {
-    return res.status(401).json({ message: '请先登录' });
-  }
-
+router.post('/publish', authenticate, async (req, res) => {
   try {
     const post = await Community.create({
-      name: req.session.user.name,
+      name: req.user.name, // 使用JWT中的用户名
       content: req.body.content,
       time: new Date()
     });

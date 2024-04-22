@@ -628,14 +628,14 @@ a {
        </ul>
     </div>
  
-    <a href="/profile" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
-          <span>
-             <i class="bi bi-chevron-right"></i>             
-          </span>
-          <span class="get__text">
-            个人信息
-          </span>
-       </a>
+    <a href="#" id="profileLink" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2">
+        <span>
+            <i class="bi bi-chevron-right"></i>             
+        </span>
+        <span class="get__text">
+          个人信息
+        </span>
+    </a>
        <a href="index.html" class="d-flex justify-content-center fw-500 cmn--btn align-items-center gap-2 logout-button">
           <span>
              <i class="bi bi-chevron-right"></i>             
@@ -724,25 +724,25 @@ a {
     });
     
     </script>
-    <script>
+  <script>
     $(document).ready(function() {
         $('#speakButton').on('click', function(event) {
             event.preventDefault(); // 阻止链接默认行为
-    
-            // 检查用户是否已经登录
-            $.get('/get-user-info', function(data) {
-                if (data.isLoggedIn) {
-                    // 如果用户已登录，允许他们发言
-                    window.location.href = 'shequ.html'; // 重定向到发言页面
-                } else {
-                    // 如果用户未登录，重定向到登录页面或显示提示
-                    alert('请先登录！');
-                    window.location.href = 'contact.html'; 
-                }
-            });
+
+            // 检查localStorage中是否存在JWT令牌
+            const token = localStorage.getItem('token');
+            if (token) {
+                // 如果存在令牌，假设用户已登录，重定向到发言页面
+                window.location.href = 'shequ.html';
+            } else {
+                // 如果不存在令牌，提示用户登录
+                alert('请先登录！');
+                window.location.href = 'contact.html'; // 重定向到登录页面
+            }
         });
     });
-    </script>    
+</script>
+
 <script>
     const likeButtons = document.querySelectorAll('.like-button');
     
