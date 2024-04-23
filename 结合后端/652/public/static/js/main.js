@@ -410,7 +410,7 @@ $(document).ready(function() {
 				$('.subside__barmenu').find('.logout-button .get__text').text('登录');
 				$('.subside__barmenu').find('.logout-button').on('click', function(event) {
 					event.preventDefault(); // Prevent link navigation
-					window.location.href = '/login.html'; // Redirect to login page
+					window.location.href = '/contact.html'; // Redirect to login page
 				});
 			}
 		},
@@ -420,7 +420,7 @@ $(document).ready(function() {
 			$('.subside__barmenu').find('.logout-button .get__text').text('登录');
 			$('.subside__barmenu').find('.logout-button').on('click', function(event) {
 				event.preventDefault(); // Prevent link navigation
-				window.location.href = '/login.html'; // Redirect to login page
+				window.location.href = '/contact.html'; // Redirect to login page
 			});
 		}
 	});

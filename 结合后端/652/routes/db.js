@@ -1,12 +1,11 @@
 
 const Sequelize = require('sequelize');
 
-const db=new Sequelize('data', 'root', '031021', {
-    host: 'localhost',
-    
+const db=new Sequelize('pdata', 'root', '031021xrzXRZ', {
+    host: 'sh-cynosdbmysql-grp-5twv5oew.sql.tencentcdb.com',
     dialect: 'mysql',
     logging: false,
-    port:3306,
+    port:28376,
     });
 
 db.authenticate()//判断连接
