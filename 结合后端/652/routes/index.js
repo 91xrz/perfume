@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
+
 const User= require('../Models/user'); 
 const Fav= require('../Models/favorite');
 const authenticate = require('./authenticate');
@@ -16,12 +17,14 @@ router.get('/', function(req, res, next) {
 
 router.use(bodyParser.json());
 // 登录路由
+
 router.post('/login', async (req, res) => {
   try {
       const user = await User.findOne({ where: { UserName: req.body.name } });
       if (!user) {
           return res.json({ success: false, message: '用户不存在' });
       }
+      // 使用 bcryptjs 来比较密码
       const passwordValid = await bcrypt.compare(req.body.password, user.Password);
       if (passwordValid) {
           const token = generateToken(user);
@@ -39,6 +42,7 @@ router.post('/login', async (req, res) => {
 // 注册路由
 router.post('/register', async (req, res) => {
   try {
+      // 使用 bcryptjs 生成哈希密码
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
       const newUser = await User.create({
           UserName: req.body.user,
@@ -67,20 +71,8 @@ router.get('/logout', (req, res) => {
 
 
 
-function getUserInfo(req) {
-  try {
-    const token = req.headers.authorization.split(' ')[1];
-    const decoded = verifyToken(token);
-    return decoded.name; // 假设token中包含name
-  } catch {
-    return null;
-  }
-}
 
-async function getUserIdByUsername(username) {
-  const user = await User.findOne({ where: { UserName: username } });
-  return user ? user.id : null;
-}
+
 
 async function addFavorite(userId, perfumeId) {
   // 检查是否已经收藏
