@@ -100,14 +100,16 @@ router.get('/get-favorite-perfumes', authenticate, async (req, res) => {
 
       // 根据标签搜索其他香水
       const perfumes = await perModel.findAll({
-        attributes: ['id', '香水名', '标签'],  // 确保字段名称与数据库中的列名称一致
+        attributes: ['id', '香水名', '标签', 'score'],  // 确保字段名称与数据库中的列名称一致
         where: {
             [Op.or]: conditions
         },
+        order: [['score', 'DESC']],  // 按评分字段降序排序
         limit: 24  
     });
     // 返回香水信息
     res.json(perfumes);
+    
     
   } catch (error) {
       console.error('Error fetching perfumes based on favorite tags:', error);
