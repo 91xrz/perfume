@@ -16,6 +16,13 @@
    <!--<< Main.css >>-->
    <link rel="stylesheet" href="static/css/main.css">
    <style>
+      ::-webkit-scrollbar {
+      display: none;
+    }
+    #load{
+   display: none;
+ }
+
       *{
          margin: 0;
          padding: 0;
@@ -784,7 +791,7 @@ a {
             个性化推荐
           </h2>
        </div>
-       <div class="row g-4">
+       <div class="row g-4" id="g-g-4">
           <div class="col-lg-3 col-md-6">
              <div class="project__wrapone">
         
@@ -816,6 +823,7 @@ a {
        </div>
     </div>
  </section>
+ <div id="loading">Loading...</div>
    <!--<<  sub side bar custom >>-->
    <div class="subside__barmenu sub__contact">
     <div class="remove__click d-flex justify-content-center align-items-center">
@@ -880,6 +888,42 @@ a {
         }
     }
 </script>
+<script>
+   window.onload = function() {
+     var content = document.getElementById('g-g-4');
+     var loading = document.getElementById('loading');
+     var page = 2; // 初始页数
+
+     function loadMoreContent() {
+       // 显示加载提示
+       loading.style.display = 'block';
+
+       // 模拟异步加载数据，这里可以替换成实际的数据加载逻辑
+       setTimeout(function() {
+         for (var i = 1; i <= 5; i++) {
+           var newItem = document.createElement('div')
+           newItem.className = 'g-g-4';
+           newItem.textContent = 'g-g-4' + (page * 2 + i); // 每页加载5条数据
+           content.appendChild(newItem);
+         }
+         // 隐藏加载提示
+         loading.style.display = 'none';
+         page++; // 更新页数
+       }, 1000); // 模拟加载延迟1秒
+     }
+
+     window.onscroll = function() {
+       var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+       var clientHeight = document.documentElement.clientHeight;
+       var scrollHeight = document.documentElement.scrollHeight;
+
+       // 判断是否滚动到页面底部
+       if (scrollTop + clientHeight >= scrollHeight-50) {
+         loadMoreContent();
+       }
+     };
+   };
+ </script>
    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.js"></script>
    <!--<< Jquery Latest >>-->
    <script data-cfasync="false" src="static/js/email-decode.min.js"></script>
