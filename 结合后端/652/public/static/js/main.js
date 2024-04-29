@@ -303,129 +303,61 @@ $(function () {
 //>> Search Popup <<//
 
 $(document).ready(function() {
-	// 请求获取用户信息
-	$.ajax({
-		url: '/get-user-info',
-		type: 'GET',
-		headers: {
-			'Authorization': 'Bearer ' + localStorage.getItem('token') // 使用存储在 localStorage 中的 token
-		},
-		success: function(data) {
-			if (data.isLoggedIn) {
-				$('.subside__barmenu').find('.passwordInput').val(data.user.name); // 显示用户名
-			}
-		},
-		error: function(xhr, status, error) {
-			console.error('Failed to fetch user info:', error);
-		}
-	});
+    // 请求获取用户信息并处理用户状态显示
+    function fetchUserInfo() {
+        $.ajax({
+            url: '/get-user-info',
+            type: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function(data) {
+                if (data.isLoggedIn) {
+                    // 显示用户名和退出登录按钮
+                    $('.subside__barmenu').find('.passwordInput').val(data.user.name);
+                    $('.subside__barmenu').find('.logout-button .get__text').text('退出登录');
+                    $('#userAvatar').show();
+                    $('#userName').text(data.user.name);
+                    $('#joinUsButton').hide();
+                } else {
+                    // 显示登录按钮
+                    $('.subside__barmenu').find('.passwordInput').parent().hide();
+                    $('.subside__barmenu').find('.logout-button .get__text').text('登录');
+                    $('#userAvatar').hide();
+                    $('#joinUsButton').show();
+                }
+            },
+            error: function() {
+                console.error('Failed to fetch user info');
+                $('.subside__barmenu').find('.passwordInput').parent().hide();
+                $('.subside__barmenu').find('.logout-button .get__text').text('登录');
+                $('#joinUsButton').show();
+            }
+        });
+    }
 
-	// 处理登出逻辑
-	$('.subside__barmenu').find('.cmn--btn').last().on('click', function(event) {
-		event.preventDefault(); // 防止链接跳转
-		$.ajax({
-			url: '/logout',
-			type: 'GET',
-			headers: {
-				'Authorization': 'Bearer ' + localStorage.getItem('token') // 使用存储在 localStorage 中的 token
-			},
-			success: function() {
-				localStorage.removeItem('token'); // 登出后清除 token
-				window.location.href = '/contact.html'; // 重定向到联系页面或登录页面
-			},
-			error: function(xhr, status, error) {
-				console.error('Logout failed:', error);
-			}
-		});
-	});
+    // 初始化用户信息
+    fetchUserInfo();
+
+    // 处理登出逻辑
+    $('.subside__barmenu').find('.logout-button').on('click', function(event) {
+        event.preventDefault(); // 防止链接跳转
+        $.ajax({
+            url: '/logout',
+            type: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function() {
+                localStorage.removeItem('token'); // 登出后清除 token
+                window.location.href = '/contact.html'; // 重定向到联系页面或登录页面
+            },
+            error: function() {
+                console.error('Logout failed');
+            }
+        });
+    });
 });
-
-// 窗口加载完毕后执行
-window.onload = function() {
-	fetch('/get-user-info', {
-		headers: {
-			'Authorization': 'Bearer ' + localStorage.getItem('token') // 使用存储在 localStorage 中的 token
-		}
-	})
-	.then(response => {
-		if (!response.ok) {
-			throw new Error('Network response was not ok.');
-		}
-		return response.json(); // 将响应转换为JSON
-	})
-	.then(data => {
-		// 根据返回的数据更新页面元素
-		if (data.isLoggedIn) {
-			// 隐藏登录按钮
-			document.getElementById('joinUsButton').style.display = 'none';
-
-			// 显示用户头像和用户信息
-			document.getElementById('userAvatar').style.display = 'block';
-			document.getElementById('userName').textContent = data.user.name;
-		} else {
-			console.log(data);
-			// 显示登录按钮
-			document.getElementById('joinUsButton').style.display = 'block';
-
-			// 隐藏用户头像
-			document.getElementById('userAvatar').style.display = 'none';
-		}
-	})
-	.catch(error => {
-		console.error('Error fetching user info:', error);
-	});
-};
-
-
-$(document).ready(function() {
-	$.ajax({
-		url: '/get-user-info',
-		type: 'GET',
-		headers: {
-			'Authorization': 'Bearer ' + localStorage.getItem('token')  // 假设 JWT 令牌存储在 localStorage 中
-		},
-		success: function(data) {
-			if (data.isLoggedIn) {
-				$('.subside__barmenu').find('.passwordInput').val(data.user.name);
-				$('.subside__barmenu').find('.logout-button .get__text').text('退出登录');
-				$('.subside__barmenu').find('.logout-button').on('click', function(event) {
-					event.preventDefault(); // Prevent link navigation
-					$.ajax({
-						url: '/logout',
-						type: 'GET',
-						headers: {
-							'Authorization': 'Bearer ' + localStorage.getItem('token')
-						},
-						success: function() {
-							window.location.href = '/contact.html'; // Redirect after logout
-							localStorage.removeItem('token'); // 清除 token
-						},
-						error: function() {
-							console.error('Logout failed');
-						}
-					});
-				});
-			} else {
-				$('.subside__barmenu').find('.passwordInput').parent().hide();
-				$('.subside__barmenu').find('.logout-button .get__text').text('登录');
-				$('.subside__barmenu').find('.logout-button').on('click', function(event) {
-					event.preventDefault(); // Prevent link navigation
-					window.location.href = '/contact.html'; // Redirect to login page
-				});
-			}
-		},
-		error: function() {
-			console.log('Failed to fetch user info');
-			$('.subside__barmenu').find('.passwordInput').parent().hide();
-			$('.subside__barmenu').find('.logout-button .get__text').text('登录');
-			$('.subside__barmenu').find('.logout-button').on('click', function(event) {
-				event.preventDefault(); // Prevent link navigation
-				window.location.href = '/contact.html'; // Redirect to login page
-			});
-		}
-	});
-});
-
 
 
 

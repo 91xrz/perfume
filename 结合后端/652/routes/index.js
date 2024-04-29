@@ -1,13 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
-
+const {Op} = require('sequelize');
 const User= require('../Models/user'); 
 const Fav= require('../Models/favorite');
+const perModel= require('../Models/perfumeMod');
 const authenticate = require('./authenticate');
 const { generateToken } = require('./jwtUtils');
 const router =express.Router();
-
+Fav.belongsTo(perModel, { foreignKey: 'perfumeid', as: 'Perfume' });
+perModel.hasMany(Fav, { foreignKey: 'perfumeid', as: 'Favorites' });
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -69,6 +71,49 @@ router.get('/logout', (req, res) => {
 });
 
 
+router.get('/get-favorite-perfumes', authenticate, async (req, res) => {
+  try {
+      // 获取用户收藏的香水信息，并包括关联的香水信息
+      const favorites = await Fav.findAll({
+          where: { userid: req.user.id },
+          include: [{
+              model: perModel,
+              as: 'Perfume'
+          }]
+      });
+
+      // 提取收藏香水的所有标签并分割成数组
+      const tags = favorites.reduce((acc, fav) => {
+          const splitTags = fav.Perfume.biaoqian.split(' ');
+          return acc.concat(splitTags);
+      }, []);
+
+      // 去除重复的标签
+      const uniqueTags = [...new Set(tags)];
+
+      // 构造查询条件，匹配任一标签
+      const conditions = uniqueTags.map(tag => ({
+          biaoqian: {
+              [Op.like]: `%${tag}%`
+          }
+      }));
+
+      // 根据标签搜索其他香水
+      const perfumes = await perModel.findAll({
+        attributes: ['id', '香水名', '标签'],  // 确保字段名称与数据库中的列名称一致
+        where: {
+            [Op.or]: conditions
+        },
+        limit: 24  
+    });
+    // 返回香水信息
+    res.json(perfumes);
+    
+  } catch (error) {
+      console.error('Error fetching perfumes based on favorite tags:', error);
+      res.status(500).send('Internal Server Error');
+  }
+});
 
 
 
@@ -133,7 +178,6 @@ router.post('/update-user-info', authenticate, async function(req, res) {
   }
 });
 
- // 测试合并
 
 
 module.exports = router;
