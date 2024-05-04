@@ -408,7 +408,7 @@ function checkAndUpdateFavorites() {
 	.then(favorites => {
 		favorites.forEach(favoriteId => {
 			var button = document.querySelector('.shouchang-button[data-perfume-id="' + favoriteId + '"]');
-			console.log('Button for perfume ID ' + favoriteId + ':', button); // 打印找到的按钮元素
+
 			if (button) {
 				var img = button.querySelector('.heart');
 				img.src = '/static/image/start-icon.webp';
