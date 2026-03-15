@@ -1,19 +1,29 @@
 
 const Sequelize = require('sequelize');
 
-const db=new Sequelize('pdata', 'root', '031021xrzXRZ', {
-    host: 'sh-cynosdbmysql-grp-5twv5oew.sql.tencentcdb.com',
+const dbConfig = {
+    database: process.env.DB_NAME || 'pdata',
+    username: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || '',
+    host: process.env.DB_HOST || '127.0.0.1',
+    port: Number(process.env.DB_PORT || 3306),
     dialect: 'mysql',
     logging: false,
-    port:28376,
-    });
+};
 
-db.authenticate()//判断连接
-.then(()=>{
-    console.log('连接成功');
-})  
-.catch(err=>{
-    console.error('连接失败', err);
+const db = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, {
+    host: dbConfig.host,
+    dialect: dbConfig.dialect,
+    logging: dbConfig.logging,
+    port: dbConfig.port,
 });
 
-module.exports=db;  
+db.authenticate() // 判断连接
+    .then(() => {
+        console.log(`MySQL连接成功: ${dbConfig.host}:${dbConfig.port}/${dbConfig.database}`);
+    })
+    .catch((err) => {
+        console.error('MySQL连接失败', err);
+    });
+
+module.exports = db;
